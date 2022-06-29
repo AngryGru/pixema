@@ -1,0 +1,30 @@
+.headerContainer {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  padding-right: 64px;
+}
+.logo {
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  display: none;
+}
+.menuBtn {
+  display: none;
+}
+
+@media (max-width: 1280px) {
+  .headerContainer {
+    width: 100%;
+    padding: 0px 40px 0px 40px;
+  }
+  .logo {
+    display: block;
+  }
+  .menuBtn {
+    display: block;
+  }
+}
