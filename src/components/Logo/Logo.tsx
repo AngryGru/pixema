@@ -1,9 +1,8 @@
 import React from "react";
-import logoStyles from "./Logo.module.scss";
 
 const Logo = ({ className }: any) => {
   return (
-    <div className={className}>
+    <div className={` ${className}`}>
       <svg
         width="158"
         height="40"

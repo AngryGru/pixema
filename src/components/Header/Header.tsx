@@ -1,5 +1,5 @@
-import React from "react";
-import headerStyles from "./Header.module.scss";
+import React, { useState } from "react";
+import "./Header.scss";
 import Search from "../Search";
 import User from "../User";
 import Logo from "../Logo";
@@ -7,11 +7,13 @@ import MenuButton from "../MenuButton";
 
 const Header = () => {
   return (
-    <div className={headerStyles.headerContainer}>
-      <Logo className={headerStyles.logo} />
+    <div className={"headerContainer"}>
+      <Logo className={"logo"} />
       <Search />
-      <div className={headerStyles.menuBtn}>
-        <MenuButton />
+      <div className={"menuContainer"}>
+        <div className={"menuBtn"}>
+          <MenuButton />
+        </div>
       </div>
       <User />
     </div>

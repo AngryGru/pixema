@@ -1,28 +1,31 @@
 .headerContainer {
   display: flex;
-  gap: 40px;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
-  padding-right: 64px;
+  padding-top: 40px;
+  margin-right: 65px;
 }
 .logo {
   margin: 0;
   padding: 0;
   width: fit-content;
-  display: none;
+  padding: 0px 40px 0px 64px;
+  cursor: pointer;
 }
 .menuBtn {
   display: none;
 }
-
 @media (max-width: 1280px) {
   .headerContainer {
     width: 100%;
-    padding: 0px 40px 0px 40px;
+    padding: 40px 64px 0px 0px;
+    gap: 40px;
+    margin-right: 0;
   }
   .logo {
-    display: block;
+    padding: 0px 0px 0px 64px;
   }
   .menuBtn {
     display: block;

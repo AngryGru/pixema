@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Search.module.scss";
+import "./Search.scss";
 import classNames from "classnames";
 import FilterIcon from "../../assets/icons/FilterIcon";
 
@@ -11,12 +11,12 @@ const Search = () => {
   };
 
   return (
-    <form className={styles.form}>
-      <input type="text" placeholder="Search" className={styles.inputDefault} />
-      <div className={styles.iconDefault} onClick={onFilterClick}>
+    <div className={"form"}>
+      <input type="text" placeholder="Search" className={"inputDefault"} />
+      <div className={"iconDefault"} onClick={onFilterClick}>
         <FilterIcon status={status} />
       </div>
-    </form>
+    </div>
   );
 };
 

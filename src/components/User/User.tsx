@@ -1,21 +1,44 @@
-import React from "react";
-import userStyles from "./User.module.scss";
+import React, { useState } from "react";
+import "./User.scss";
 import UserIcon from "../../assets/icons/UserIcon";
-import { FaAngleRight } from "react-icons/fa";
+import { FaAngleRight, FaAngleDown } from "react-icons/fa";
+import Popup from "reactjs-popup";
 
 const User = () => {
+  const [isAngleActive, setAngleActive] = useState(false);
+
   return (
-    <div className={userStyles.userContainer}>
-      <div className={userStyles.userInfo}>
-        <div className={userStyles.userIcon}>
-          <UserIcon />
+    <Popup
+      position="bottom center"
+      onOpen={() => {
+        setAngleActive(true);
+      }}
+      onClose={() => {
+        setAngleActive(false);
+      }}
+      trigger={
+        <div className={"userContainer"}>
+          <div className={"userInfo"}>
+            <div className={"userIcon"}>
+              <UserIcon />
+            </div>
+            <div className={"userName"}>Sign In</div>
+          </div>
+          <div className={"userAngle"}>
+            {isAngleActive ? <FaAngleDown /> : <FaAngleRight />}
+          </div>
         </div>
-        <div className={userStyles.userName}>Sign In</div>
+      }
+    >
+      <div className={"popupContent"}>
+        <div className={"popupContentItem topItem"}>
+          <a>Edit profile</a>
+        </div>
+        <div className={"popupContentItem bottomItem"}>
+          <a>Log out</a>
+        </div>
       </div>
-      <div className={userStyles.userAngle}>
-        <FaAngleRight />
-      </div>
-    </div>
+    </Popup>
   );
 };
 

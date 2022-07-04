@@ -1,0 +1,28 @@
+.btn {
+  height: 56px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  cursor: pointer;
+  min-width: 200px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+.primary {
+  background-color: #7b61ff;
+  &:hover {
+    background-color: #917cff;
+  }
+}
+
+.secondary {
+  background-color: #323537;
+  &:hover {
+    background-color: #3d4042;
+  }
+}

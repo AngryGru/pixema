@@ -6,9 +6,10 @@ $white: #ffffff;
 .form {
   display: flex;
   align-items: center;
-  width: 70%;
+  width: 1186px;
   height: 50px;
   border-radius: 10px;
+  background-color: $default-bg;
 
   &:hover {
     border: 2px solid $border-primary;

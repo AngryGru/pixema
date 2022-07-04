@@ -1,16 +1,20 @@
 $primary: #7b61ff;
 $white: #ffffff;
+$modal-bg: #242426;
+$border-color: #323537;
 
 .userContainer {
   box-sizing: border-box;
   padding: 5px;
-  max-width: 267px;
+  max-width: 300px;
   min-width: 200px;
+  width: 267px;
 
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  cursor: pointer;
 }
 .userInfo {
   display: flex;
@@ -42,10 +46,40 @@ $white: #ffffff;
   justify-content: center;
   align-items: center;
   color: $white;
-  cursor: pointer;
 
   font-size: 20px;
 }
+.userAngleActive {
+  transform: rotate(90deg);
+  transition: 0.3s;
+}
+
+.popupContent {
+  background-color: $modal-bg;
+  color: $white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  max-width: 300px;
+  min-width: 200px;
+  width: 260px;
+}
+.popupContentItem {
+  font-weight: 500;
+  font-size: 16px;
+  color: $white;
+  padding: 20px;
+  cursor: pointer;
+}
+.topItem {
+  border-bottom: 1px solid $border-color;
+}
+.bottomItem {
+  color: $primary;
+}
+.popup-arrow {
+  display: none;
+}
+
 @media (max-width: 1280px) {
   .userContainer {
     display: none;

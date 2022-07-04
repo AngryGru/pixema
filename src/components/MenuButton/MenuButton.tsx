@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./MenuButton.module.scss";
+import "./MenuButton.scss";
 
 const MenuButton = () => {
   return (
-    <div className={styles.menuBtnContainer}>
+    <div className={"menuBtnContainer"}>
       <svg
         width="16"
         height="14"
@@ -14,8 +14,8 @@ const MenuButton = () => {
         <path
           d="M1 1L15 1M1 7H15M1 13H15"
           stroke="white"
-          stroke-width="2"
-          stroke-linecap="round"
+          strokeWidth="2"
+          strokeLinecap="round"
         />
       </svg>
     </div>

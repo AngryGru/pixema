@@ -1,0 +1,27 @@
+$default: #80858b;
+$primary: #7b61ff;
+$light: #afb2b6;
+
+.sidebarContainer {
+  box-sizing: border-box;
+  color: white;
+  width: 25%;
+  padding: 50px 40px 14px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // background-color: aquamarine;
+}
+.sidebarText {
+  color: $light;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1280px) {
+  .sidebarContainer {
+    display: none;
+  }
+}

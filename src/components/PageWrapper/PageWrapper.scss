@@ -1,0 +1,28 @@
+.pageContainer {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.pageContent {
+  display: flex;
+  margin-right: 65px;
+  padding-bottom: 65px;
+  // background-color: aqua;
+  // height: 100%;
+}
+
+@media (max-width: 1280px) {
+  .pageContainer {
+    height: 100%;
+    align-items: center;
+  }
+  .pageContent {
+    width: 65%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    padding: 64px;
+  }
+}

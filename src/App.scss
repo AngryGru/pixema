@@ -1,12 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;300;400;600;700&display=swap");
+
 $primary-color: #000000;
 
-body{
+body {
   background-color: $primary-color;
-}
-.App {
-  text-align: center;
-  background-color: red;
+  margin: 0;
   height: 100%;
 }
-
-
+.App {
+  font-family: "Exo 2", sans-serif;
+  background-color: $primary-color;
+}
