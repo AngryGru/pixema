@@ -1,0 +1,33 @@
+@import "src/assets/colors.scss";
+
+.btnGroupContainer {
+  border-radius: 10px;
+  display: flex;
+  width: 100%;
+}
+.groupBtn {
+  background-color: $color-outer_space;
+  border: none;
+  outline: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 50px;
+  width: 100%;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-cape_code;
+  }
+}
+
+#saveBtn {
+  border-right: 1px solid $color-black;
+  border-radius: 10px 0px 0px 10px;
+}
+#sendBtn {
+  border-left: 1px solid $color-black;
+  border-radius: 0px 10px 10px 0px;
+}
