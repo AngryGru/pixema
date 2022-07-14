@@ -1,0 +1,69 @@
+@import "src/assets/colors.scss";
+
+.cardContainer {
+  cursor: pointer;
+  max-width: fit-content;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+.cardPoster {
+  position: relative;
+}
+.cardPoster img {
+  border-radius: 20px;
+  height: 300px;
+  width: auto;
+}
+.cardText {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 15px;
+}
+.cardTitle {
+  font-weight: 700;
+  font-size: 16px;
+  color: $color-white;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  &:hover {
+    color: $color-cornflower_blue;
+  }
+}
+.cardDescription {
+  font-weight: 500;
+  font-size: 16px;
+  color: #afb2b6;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.raiting {
+  box-sizing: border-box;
+  background-color: $color-green_haze;
+  width: 37px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 3px;
+
+  font-weight: 600;
+  font-size: 16px;
+  color: $color-white;
+
+  position: absolute;
+  top: 15px;
+  left: 15px;
+}
+
+.highRating {
+  background-color: $color-green_haze;
+}
+.midRaiting {
+  background-color: $color-buttercup;
+}
+.lowRaiting {
+  background-color: $color-crimson;
+}
