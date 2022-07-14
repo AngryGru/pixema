@@ -1,0 +1,12 @@
+.emptyStateContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.emptyStateMessage {
+  font-size: 20px;
+  font-weight: 600;
+  color: #afb2b6;
+}
