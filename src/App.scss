@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Exo+2:wght@100;300;400;600;700&display=swap");
+@import "src/assets/colors.scss";
 
 $primary-color: #000000;
 
 body {
-  background-color: $primary-color;
+  background-color: $color-black;
   margin: 0;
   height: 100%;
 }
 .App {
   font-family: "Exo 2", sans-serif;
-  background-color: $primary-color;
+  background-color: $color-black;
 }

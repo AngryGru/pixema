@@ -1,9 +1,4 @@
-$white: #ffffff;
-$purple-on: #7b61ff;
-$gray-off: #80858b;
-
-$purple-hover: #917cff;
-$gray-hover: #afb2b6;
+@import "src/assets/colors.scss";
 
 .themeToggle {
   width: fit-content;
@@ -25,7 +20,7 @@ $gray-hover: #afb2b6;
   right: 0;
   bottom: 0;
   cursor: pointer;
-  background-color: $gray-off;
+  background-color: $color-oslo_gray;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 34px;
@@ -37,22 +32,22 @@ $gray-hover: #afb2b6;
   width: 16px;
   left: 4px;
   bottom: 4px;
-  background-color: $white;
+  background-color: $color-white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   border-radius: 50%;
 }
 .slider:hover {
-  background-color: $gray-hover;
+  background-color: $color-bombay;
 }
 input:checked + .slider:hover {
-  background-color: $purple-hover;
+  background-color: $color-heliotrope;
 }
 input:checked + .slider {
-  background-color: $purple-on;
+  background-color: $color-cornflower_blue;
 }
 input:focus + .slider {
-  box-shadow: 0 0 1px $purple-on;
+  box-shadow: 0 0 1px $color-cornflower_blue;
 }
 input:checked + .slider:before {
   -webkit-transform: translateX(26px);

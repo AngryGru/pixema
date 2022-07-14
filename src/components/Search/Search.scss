@@ -1,23 +1,22 @@
-$default-bg: #323537;
-$disabled-bg: #80858b;
-$border-primary: #7b61ff;
-$white: #ffffff;
+@import "src/assets/colors.scss";
 
 .form {
   display: flex;
   align-items: center;
-  width: 1186px;
+  width: 100%;
   height: 50px;
   border-radius: 10px;
-  background-color: $default-bg;
+  background-color: $color-outer_space;
+  padding-left: 20px;
+  padding-right: 10px;
 
   &:hover {
-    border: 2px solid $border-primary;
+    border: 2px solid $color-cornflower_blue;
   }
 }
 .inputDefault {
-  background-color: $default-bg;
-  color: $white;
+  background-color: $color-outer_space;
+  color: $color-white;
   width: 100%;
   height: 50px;
   border-radius: 10px 0px 0px 10px;
@@ -29,14 +28,14 @@ $white: #ffffff;
 
 .inputDisabled {
   @extend .inputDefault;
-  background-color: $disabled-bg;
+  background-color: $color-oslo_gray;
   &:hover {
     border: none;
   }
 }
 
 .iconDefault {
-  background-color: $default-bg;
+  background-color: $color-outer_space;
   border-radius: 0px 10px 10px 0px;
   width: 40px;
   height: 50px;

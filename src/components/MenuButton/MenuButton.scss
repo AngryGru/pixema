@@ -1,11 +1,22 @@
+@import "src/assets/colors.scss";
+
+.menuContainer {
+  // background-color: aqua;
+  display: flex;
+}
+
 .menuBtnContainer {
   width: 50px;
   height: 50px;
-  background-color: #7b61ff;
+  background-color: $color-cornflower_blue;
   border-radius: 10px;
 
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
 }

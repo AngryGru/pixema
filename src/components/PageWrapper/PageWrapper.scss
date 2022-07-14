@@ -1,3 +1,5 @@
+@import "src/assets/colors.scss";
+
 .pageContainer {
   color: white;
   display: flex;
@@ -6,10 +8,8 @@
 }
 .pageContent {
   display: flex;
-  margin-right: 65px;
   padding-bottom: 65px;
-  // background-color: aqua;
-  // height: 100%;
+  // background-color: yellow;
 }
 
 @media (max-width: 1280px) {
@@ -18,11 +18,19 @@
     align-items: center;
   }
   .pageContent {
-    width: 65%;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-right: 0;
-    padding: 64px;
+    // padding-right: 60px;
+    // padding-left: 60px;
+  }
+}
+@media (max-width: 400px) {
+  .pageContent {
+    padding: 0;
+    margin: 0;
   }
 }

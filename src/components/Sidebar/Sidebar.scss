@@ -1,19 +1,16 @@
-$default: #80858b;
-$primary: #7b61ff;
-$light: #afb2b6;
+@import "src/assets/colors.scss";
 
 .sidebarContainer {
   box-sizing: border-box;
-  color: white;
-  width: 25%;
+  color: $color-white;
+  width: 20%;
   padding: 50px 40px 14px 64px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // background-color: aquamarine;
 }
 .sidebarText {
-  color: $light;
+  color: $color-bombay;
   font-weight: 500;
   font-size: 16px;
   display: flex;

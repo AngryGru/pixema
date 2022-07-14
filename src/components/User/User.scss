@@ -1,12 +1,12 @@
-$primary: #7b61ff;
-$white: #ffffff;
-$modal-bg: #242426;
-$border-color: #323537;
+@import "src/assets/colors.scss";
 
 .userContainer {
   box-sizing: border-box;
   padding: 5px;
-  max-width: 300px;
+
+  padding-right: 0px;
+  // max-width: 300px;
+  max-width: 250px;
   min-width: 200px;
   width: 267px;
 
@@ -32,20 +32,20 @@ $border-color: #323537;
   padding: 16px;
   border-radius: 10px;
 
-  background-color: $primary;
+  background-color: $color-cornflower_blue;
 }
 .userName {
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  color: $white;
+  color: $color-white;
 }
 .userAngle {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: $white;
+  color: $color-white;
 
   font-size: 20px;
 }
@@ -55,8 +55,8 @@ $border-color: #323537;
 }
 
 .popupContent {
-  background-color: $modal-bg;
-  color: $white;
+  background-color: $color-shark;
+  color: $color-white;
   border-radius: 10px;
   box-sizing: border-box;
   max-width: 300px;
@@ -66,15 +66,23 @@ $border-color: #323537;
 .popupContentItem {
   font-weight: 500;
   font-size: 16px;
-  color: $white;
+  color: $color-white;
   padding: 20px;
   cursor: pointer;
 }
 .topItem {
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid $color-outer_space;
+  &:hover{
+    background-color: $color-outer_space;
+    border-radius: 10px 10px 0px 0px
+  }
 }
 .bottomItem {
-  color: $primary;
+  color: $color-cornflower_blue;
+  &:hover{
+    background-color: $color-outer_space;
+    border-radius: 0px 0px 10px 10px
+  }
 }
 .popup-arrow {
   display: none;

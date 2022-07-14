@@ -1,10 +1,8 @@
-$default-bg: #323537;
-$white: #ffffff;
-$border-primary: #7b61ff;
+@import "src/assets/colors.scss";
 
 .input {
-  background-color: $default-bg;
-  color: $white;
+  background-color: $color-outer_space;
+  color: $color-white;
   height: 50px;
   border-radius: 10px;
   border: none;
@@ -13,6 +11,13 @@ $border-primary: #7b61ff;
   padding: 10px;
 
   &:hover {
-    border: 2px solid $border-primary;
+    border: 2px solid $color-cornflower_blue;
+  }
+}
+
+.error {
+  border: 2px solid $color-sunset_orange;
+  &:hover {
+    border: 2px solid $color-sunset_orange;
   }
 }

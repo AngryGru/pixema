@@ -1,11 +1,13 @@
+@import "src/assets/colors.scss";
+
 .btn {
-  height: 56px;
+  height: 50px;
   font-weight: 600;
   font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: $color-white;
   cursor: pointer;
   min-width: 200px;
   border-radius: 10px;
@@ -14,15 +16,21 @@
 }
 
 .primary {
-  background-color: #7b61ff;
+  background-color: $color-cornflower_blue;
   &:hover {
-    background-color: #917cff;
+    background-color: $color-heliotrope;
   }
 }
 
 .secondary {
-  background-color: #323537;
+  background-color: $color-outer_space;
   &:hover {
-    background-color: #3d4042;
+    background-color: $color-cape_code;
+  }
+}
+.disabled {
+  background-color: $color-oslo_gray;
+  &:hover {
+    background-color: $color-oslo_gray;
   }
 }

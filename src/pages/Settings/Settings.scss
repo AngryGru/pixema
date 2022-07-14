@@ -1,3 +1,4 @@
+@import "src/assets/colors.scss";
 $dark-bg: #242426;
 $white: #ffffff;
 $gray: #afb2b6;
@@ -6,18 +7,19 @@ $gray: #afb2b6;
   width: 100%;
   display: flex;
   flex-direction: column;
+  padding-right: 40px;
 }
 
 .itemTitle {
   font-weight: 600;
   font-size: 24px;
-  color: $white;
+  color: $color-white;
   text-align: left;
 }
 
 .itemContent {
   box-sizing: border-box;
-  background-color: $dark-bg;
+  background-color: $color-shark;
   border-radius: 10px;
   padding: 40px;
 
@@ -47,12 +49,12 @@ $gray: #afb2b6;
 .colorModeTitle {
   font-weight: 700;
   font-size: 16px;
-  color: $white;
+  color: $color-white;
 }
 .colorModeDescription {
   font-weight: 500;
   font-size: 16px;
-  color: $gray;
+  color: $color-bombay;
 }
 
 .actions {
@@ -63,17 +65,42 @@ $gray: #afb2b6;
 }
 
 @media (max-width: 1280px) {
-  .container {
-    align-self: flex-end;
+  .settingsContainer {
+    padding-right: 60px;
+    padding-left: 60px;
+    width: 100%;
+  }
+  .actions {
+    width: 100%;
+    align-self: center;
+  }
+  .saveBtn,
+  .cancelBtn {
+    width: 50%;
   }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 768px) {
   .itemContent {
     flex-wrap: wrap;
   }
   .passwordItem,
   .confirmPasswordItem {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .itemContent {
+    padding: 10px;
+  }
+  .actions {
+    width: 100%;
+    flex-wrap: wrap;
+    align-self: center;
+  }
+  .saveBtn,
+  .cancelBtn {
     width: 100%;
   }
 }

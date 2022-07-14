@@ -1,6 +1,4 @@
-$default: #80858b;
-$primary: #7b61ff;
-$light: #afb2b6;
+@import "src/assets/colors.scss";
 
 .linksContainer {
   display: flex;
@@ -8,6 +6,7 @@ $light: #afb2b6;
   gap: 40px;
   width: fit-content;
   margin-top: 64px;
+  margin-bottom: 170px;
 }
 .menuItem {
   cursor: pointer;
@@ -19,11 +18,15 @@ $light: #afb2b6;
   align-items: center;
   gap: 25px;
 
-  color: $default;
-  fill: $default;
+  color: $color-oslo_gray;
+  fill: $color-oslo_gray;
 
   &:hover {
-    color: $primary;
-    fill: $primary;
+    color: $color-cornflower_blue;
+    fill: $color-cornflower_blue;
   }
+}
+.activeTab {
+  color: $color-cornflower_blue;
+  fill: $color-cornflower_blue;
 }
