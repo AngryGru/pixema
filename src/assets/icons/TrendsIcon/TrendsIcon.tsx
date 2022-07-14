@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./TrendsIcon.module.scss";
+import "./TrendsIcon.scss";
 
 const TrendsIcon = () => {
   return (
-    <div className={styles.trendsIcon}>
+    <div className={"trendsIcon"}>
       <svg
         width="14"
         height="20"

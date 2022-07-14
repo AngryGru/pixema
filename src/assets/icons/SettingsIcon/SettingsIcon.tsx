@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./SettingsIcon.module.scss";
+import "./SettingsIcon.scss";
 
 const SettingsIcon = () => {
   return (
-    <div className={styles.settingsIcon}>
+    <div className={"settingsIcon"}>
       <svg
         width="20"
         height="20"

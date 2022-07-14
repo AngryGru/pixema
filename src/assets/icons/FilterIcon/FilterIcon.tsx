@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./FilterIcon.module.scss";
+import "./FilterIcon.scss";
 
 const FilterIcon = ({ status }: any) => {
   return (
@@ -10,7 +10,7 @@ const FilterIcon = ({ status }: any) => {
         viewBox="0 0 6 6"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={styles.ellipse}
+        className={"ellipse"}
         display={status ? "inline" : "none"}
       >
         <circle cx="3" cy="3" r="3" fill="#7B61FF" />

@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./FavoritesIcon.module.scss";
+import "./FavoritesIcon.scss";
 
 const FavoritesIcon = () => {
   return (
-    <div className={styles.favIcon}>
+    <div className="favIcon">
       <svg
         width="14"
         height="19"

@@ -1,9 +1,9 @@
 import React from "react";
-import styles from "./HomeIcon.module.scss";
+import "./HomeIcon.scss";
 
 const HomeIcon = () => {
   return (
-    <div className={styles.homeIcon}>
+    <div className={"homeIcon"}>
       <svg
         width="18"
         height="18"
