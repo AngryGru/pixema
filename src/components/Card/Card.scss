@@ -59,7 +59,6 @@
   top: 15px;
   left: 15px;
 }
-
 .highRating {
   background-color: $color-green_haze;
 }
@@ -68,4 +67,13 @@
 }
 .lowRaiting {
   background-color: $color-crimson;
+}
+#trendRaiting {
+  @extend .raiting;
+  background-color: $color-cornflower_blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  gap: 5px;
 }

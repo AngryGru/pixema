@@ -4,29 +4,25 @@ import { CardTypes, MovieCardType, TableDataTypes } from "../../common/types";
 export type MovieReducerStateType = {
   activeTab: string;
   movieList: CardTypes[];
+  trendsList: CardTypes[];
   singleMovie: MovieCardType | null;
   singleMovieLoading: boolean;
   movieCrew: TableDataTypes | null;
   relatedMovieList: MovieCardType[];
   searchResults: MovieCardType[];
   pageLoading: boolean;
-
-  //   isVisibleSidebar: boolean;
-  //   isUnVisibleFormSelect: boolean;
 };
 
 const initialState = {
   activeTab: "home",
   movieList: [],
+  trendsList: [],
   singleMovie: null,
   singleMovieLoading: false,
   movieCrew: null,
   relatedMovieList: [],
   searchResults: [],
   pageLoading: false,
-
-  //   isVisibleSidebar: false,
-  //   isUnVisibleFormSelect: true,
 };
 
 const movieSlice = createSlice({
@@ -40,11 +36,14 @@ const movieSlice = createSlice({
     setMovieList: (state, action) => {
       state.movieList = action.payload;
     },
+    loadTrendsList: (state, action: any) => {},
+    setTrendsList: (state, action) => {
+      state.trendsList = action.payload;
+    },
     loadSingleMovie: (state, action) => {},
     setSingleMovie: (state, action) => {
       state.singleMovie = action.payload;
     },
-
     setMovieCrew: (state, action) => {
       state.movieCrew = action.payload;
     },
@@ -55,7 +54,6 @@ const movieSlice = createSlice({
     setRelatedMovieList: (state, action) => {
       state.relatedMovieList = action.payload;
     },
-
     setSearchResults: (state, action) => {
       state.searchResults = action.payload;
     },
@@ -63,13 +61,6 @@ const movieSlice = createSlice({
     setPageLoading: (state, action) => {
       state.pageLoading = action.payload;
     },
-
-    // setIsVisibleSidebar: (state, action: PayloadAction<boolean>) => {
-    //   state.isVisibleSidebar = action.payload;
-    // },
-    // setIsVisibleFormSelect: (state, action: PayloadAction<boolean>) => {
-    //   state.isUnVisibleFormSelect = action.payload;
-    // },
   },
 });
 
@@ -86,8 +77,8 @@ export const {
   setSearchResults,
   loadSearchResults,
   setPageLoading,
-  //   setIsVisibleSidebar,
-  //   setIsVisibleFormSelect,
+  loadTrendsList,
+  setTrendsList,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;
@@ -95,6 +86,7 @@ export default movieSlice.reducer;
 export const MovieSelector = {
   getActiveTab: (state: any) => state.films.activeTab,
   getMovieList: (state: any) => state.films.movieList,
+  getTrendsList: (state: any) => state.films.trendsList,
   getSingleMovie: (state: any) => state.films.singleMovie,
   getSingleMovieCrew: (state: any) => state.films.singleMovieCrew,
   getSingleMovieLoading: (state: any) => state.films.singleMovieLoading,
@@ -102,7 +94,4 @@ export const MovieSelector = {
   getRelatedMovieList: (state: any) => state.films.relatedMovieList,
   getSearchResults: (state: any) => state.films.searchResults,
   getPageLoading: (state: any) => state.films.pageLoading,
-
-  //   getIsVisibleSidebar: (state: any) => state.films.isVisibleSidebar,
-  //   getIsVisibleFormSelect: (state: any) => state.films.isUnVisibleFormSelect,
 };

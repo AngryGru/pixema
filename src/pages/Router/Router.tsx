@@ -38,8 +38,7 @@ const Router = () => {
             path={"/trends"}
             element={
               <PageWrapper>
-                {/* <Home isTrends /> */}
-                <Home />
+                <Home isTrends />
               </PageWrapper>
             }
           />

@@ -19,7 +19,19 @@ const loginUserApi = (data: {
 const getMovieListApi = (token: any) => {
   return API.get(
     "/titles",
-    {},
+    { order: "popularity:desc" },
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
+
+const getTrendsListApi = (token: any) => {
+  return API.get(
+    "/titles",
+    { order: "revenue:desc" },
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -39,6 +51,7 @@ const getSingleMovieApi = (id: string, token: any) => {
     }
   );
 };
+
 const getRelatedMovieListApi = (id: string, token: any) => {
   return API.get(
     `/titles/${id}/related`,
@@ -83,4 +96,5 @@ export {
   getRelatedMovieListApi,
   getUserInfoApi,
   getSearchResultsApi,
+  getTrendsListApi,
 };

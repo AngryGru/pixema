@@ -35,7 +35,7 @@ const NavLinks = () => {
         className={classNames("menuItem", {
           ["activeTab"]: activeTab === "trends",
         })}
-        to={"/home"}
+        to={"/trends"}
         onClick={() => onTabClick("trends")}
       >
         <TrendsIcon />

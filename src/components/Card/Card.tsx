@@ -18,6 +18,7 @@ const Card: FC<MovieCardType> = ({
         <div className="cardPoster">
           {rating && (
             <div
+              id={isTrends ? "trendRaiting" : "rate"}
               className={classNames("raiting", {
                 ["highRaiting"]: +rating >= 7,
                 ["midRaiting"]: +rating >= 4 && +rating < 7,
