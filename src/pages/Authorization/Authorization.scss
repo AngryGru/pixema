@@ -1,0 +1,36 @@
+@import "src/assets/colors.scss";
+
+.authContainer {
+  background-color: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0) 23.56%
+  );
+  background-image: url("../../assets/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  // height: 100vh;
+}
+.allRightsText {
+  color: $color-bombay;
+  font-weight: 500;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.authContainerLogo {
+  padding-top: 40px;
+  padding-left: 60px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .authContainerLogo {
+    text-align: center;
+    padding-top: 40px;
+    padding-left: 0;
+  }
+}

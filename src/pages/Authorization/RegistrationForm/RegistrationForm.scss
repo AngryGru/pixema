@@ -1,0 +1,56 @@
+@import "src/assets/colors.scss";
+
+.registrationFormContainer {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.registrationForm {
+  color: $color-white;
+  width: 40%;
+  background-color: $color-shark;
+  border-radius: 10px;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.registrationFormTitle {
+  font-weight: 600;
+  font-size: 24px;
+}
+label div {
+  padding-top: 5px;
+}
+.regInp {
+  width: 100%;
+}
+.registrationBtn {
+  margin-top: 20px;
+}
+
+.registrationText {
+  color: $color-oslo_gray;
+  font-weight: 500;
+  font-size: 16px;
+
+  align-self: center;
+}
+
+.registrationLink {
+  color: $color-heliotrope;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .registrationForm {
+    width: 65%;
+  }
+}

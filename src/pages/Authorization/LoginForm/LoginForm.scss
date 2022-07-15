@@ -1,0 +1,59 @@
+@import "src/assets/colors.scss";
+
+.loginFormContainer {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.loginForm {
+  color: $color-white;
+  width: 40%;
+  background-color: $color-shark;
+  border-radius: 10px;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.loginFormTitle {
+  font-weight: 600;
+  font-size: 24px;
+}
+label div {
+  padding-top: 5px;
+}
+.loginInp {
+  width: 100%;
+}
+.loginBtn {
+  margin-top: 20px;
+}
+
+.loginText {
+  color: $color-oslo_gray;
+  font-weight: 500;
+  font-size: 16px;
+
+  align-self: center;
+}
+
+.loginLink {
+  color: $color-heliotrope;
+  cursor: pointer;
+}
+.passwordLink {
+  color: $color-oslo_gray;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .loginForm {
+    width: 65%;
+  }
+}
