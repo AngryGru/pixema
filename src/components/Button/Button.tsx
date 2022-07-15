@@ -2,8 +2,30 @@ import classNames from "classnames";
 import React, { FC } from "react";
 import "./Button.scss";
 
-const Button = ({ children, className }: any) => {
-  return <button className={`btn ${className}`}>{children}</button>;
+type ButtonProps = {
+  disabled?: boolean;
+  onClick?: () => void;
+  className: string;
+  children: string;
+};
+
+const Button: FC<ButtonProps> = ({
+  children,
+  className,
+  disabled,
+  onClick,
+}) => {
+  return (
+    <button
+      onClick={onClick}
+      disabled={disabled}
+      className={classNames("btn", `${className}`, {
+        ["disabled"]: disabled,
+      })}
+    >
+      {children}
+    </button>
+  );
 };
 
 export default Button;

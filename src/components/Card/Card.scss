@@ -18,11 +18,13 @@
 }
 .cardText {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 5px;
   margin-top: 15px;
 }
 .cardTitle {
+  width: 100%;
   font-weight: 700;
   font-size: 16px;
   color: $color-white;

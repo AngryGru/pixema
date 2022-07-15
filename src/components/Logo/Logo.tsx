@@ -1,8 +1,18 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setActiveTab } from "../../redux/reducers/movieReducer";
 
 const Logo = ({ className }: any) => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const onLogoClick = () => {
+    navigate("/home");
+    dispatch(setActiveTab("home"));
+  };
+
   return (
-    <div className={` ${className}`}>
+    <div className={` ${className}`} onClick={onLogoClick}>
       <svg
         width="158"
         height="40"

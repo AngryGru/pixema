@@ -1,16 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./PageWrapper.scss";
-import { Outlet } from "react-router-dom";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
 
-const PageWrapper = () => {
+const PageWrapper = ({ children }: any) => {
   return (
     <div className={"pageContainer"}>
       <Header />
       <div className={"pageContent"}>
         <Sidebar />
-        <Outlet />
+        {children}
       </div>
     </div>
   );

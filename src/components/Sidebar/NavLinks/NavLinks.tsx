@@ -1,27 +1,63 @@
 import React from "react";
 import "./NavLinks.scss";
+import classNames from "classnames";
+import { useDispatch, useSelector } from "react-redux";
 import HomeIcon from "../../../assets/icons/HomeIcon";
 import TrendsIcon from "../../../assets/icons/TrendsIcon";
 import FavoritesIcon from "../../../assets/icons/FavoritesIcon";
 import SettingsIcon from "../../../assets/icons/SettingsIcon";
 import { NavLink } from "react-router-dom";
+import {
+  MovieSelector,
+  setActiveTab,
+} from "../../../redux/reducers/movieReducer";
 
 const NavLinks = () => {
+  const activeTab = useSelector(MovieSelector.getActiveTab);
+  const dispatch = useDispatch();
+  const onTabClick = (tab: string) => {
+    dispatch(setActiveTab(tab));
+  };
+
   return (
     <div className={"linksContainer"}>
-      <a className={"menuItem"}>
+      <NavLink
+        className={classNames("menuItem", {
+          ["activeTab"]: activeTab === "home",
+        })}
+        to={"/home"}
+        onClick={() => onTabClick("home")}
+      >
         <HomeIcon />
         Home
-      </a>
-      <a className={"menuItem"}>
+      </NavLink>
+      <NavLink
+        className={classNames("menuItem", {
+          ["activeTab"]: activeTab === "trends",
+        })}
+        to={"/home"}
+        onClick={() => onTabClick("trends")}
+      >
         <TrendsIcon />
         Trends
-      </a>
-      <a className={"menuItem"}>
+      </NavLink>
+      <NavLink
+        className={classNames("menuItem", {
+          ["activeTab"]: activeTab === "favorites",
+        })}
+        to={"/favorites"}
+        onClick={() => onTabClick("favorites")}
+      >
         <FavoritesIcon />
         Favorites
-      </a>
-      <NavLink className={"menuItem"} to={"/settings"}>
+      </NavLink>
+      <NavLink
+        className={classNames("menuItem", {
+          ["activeTab"]: activeTab === "settings",
+        })}
+        to={"/settings"}
+        onClick={() => onTabClick("settings")}
+      >
         <SettingsIcon />
         Settings
       </NavLink>

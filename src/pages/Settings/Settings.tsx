@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import "./Settings.scss";
-import Input from "../../components/Input";
 import LabelItem from "./LabelItem";
 import Switch from "../../components/Switch";
 import Button from "../../components/Button";
+import { useSelector } from "react-redux";
+import { AuthSelector } from "../../redux/reducers/authReducer";
 
 const Settings = () => {
+  const profileName = useSelector(AuthSelector.getUsername);
+  const profileEmail = useSelector(AuthSelector.getEmail);
+
   return (
     <div className={"settingsContainer"}>
       <div className={"itemContainer"}>
@@ -15,11 +19,17 @@ const Settings = () => {
             title={"Name"}
             inputType={"text"}
             inputPlaceholder={"Your name"}
+            inputValue={profileName}
+            inputReadonly={true}
+            inputClassName={"inpDisabled"}
           />
           <LabelItem
             title={"Email"}
             inputType={"email"}
             inputPlaceholder={"Your email"}
+            inputValue={profileEmail}
+            inputReadonly={true}
+            inputClassName={"inpDisabled"}
           />
         </div>
       </div>
@@ -53,8 +63,8 @@ const Settings = () => {
         <p className={"itemTitle"}>Color mode</p>
         <div className={"colorModeContent"}>
           <div>
-            <p className={"colorModeTitle"}>Dark</p>
-            <p className={"colorModeDescription"}>Use dark theme</p>
+            <p className={"colorModeTitle"}>Light</p>
+            <p className={"colorModeDescription"}>Use light theme</p>
           </div>
           <div>
             <Switch />

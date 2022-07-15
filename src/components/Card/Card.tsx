@@ -10,9 +10,10 @@ const Card: FC<MovieCardType> = ({
   tagline,
   rating,
   isTrends,
+  onClick,
 }) => {
   return (
-    <div className="cardContainer">
+    <div className="cardContainer" onClick={onClick}>
       <div className="cardContent">
         <div className="cardPoster">
           {rating && (

@@ -84,3 +84,27 @@ export type TableDataTypes = {
   writers: string[];
   cast: string[];
 };
+
+export type LabelItemProps = {
+  title: string;
+  inputType: string;
+  inputPlaceholder: string;
+  inputName?: string;
+  inputValue?: string;
+  inputClassName?: string;
+  inputReadonly?: boolean;
+  onBlur?: (event: any) => any;
+  onChange?: (event: any) => void;
+};
+
+export type InputProps = {
+  type: string;
+  name?: string;
+  readonly?: boolean;
+  className?: string;
+  error?: boolean;
+  placeholder?: string;
+  value?: string;
+  onBlur?: (event: any) => void;
+  onChange?: (event: any) => void;
+};

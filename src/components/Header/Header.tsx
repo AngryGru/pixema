@@ -4,6 +4,7 @@ import Search from "../Search";
 import User from "../User";
 import Logo from "../Logo";
 import MenuButton from "../MenuButton";
+import Menu from "../MenuButton/Menu";
 
 const Header = () => {
   return (
@@ -14,8 +15,8 @@ const Header = () => {
         <div className={"menuBtn"}>
           <MenuButton />
         </div>
+        <User />
       </div>
-      <User />
     </div>
   );
 };

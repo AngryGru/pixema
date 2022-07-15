@@ -31,7 +31,7 @@
   height: 50px;
   padding: 16px;
   border-radius: 10px;
-
+  font-size: 22px;
   background-color: $color-cornflower_blue;
 }
 .userName {
@@ -56,6 +56,7 @@
 
 .popupContent {
   background-color: $color-shark;
+  border: 1px solid $color-outer_space;
   color: $color-white;
   border-radius: 10px;
   box-sizing: border-box;
@@ -69,19 +70,24 @@
   color: $color-white;
   padding: 20px;
   cursor: pointer;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
 }
 .topItem {
   border-bottom: 1px solid $color-outer_space;
-  &:hover{
+  &:hover {
     background-color: $color-outer_space;
-    border-radius: 10px 10px 0px 0px
+    border-radius: 10px 10px 0px 0px;
   }
 }
 .bottomItem {
   color: $color-cornflower_blue;
-  &:hover{
+  &:hover {
     background-color: $color-outer_space;
-    border-radius: 0px 0px 10px 10px
+    border-radius: 0px 0px 10px 10px;
   }
 }
 .popup-arrow {

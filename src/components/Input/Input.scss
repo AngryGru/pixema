@@ -21,3 +21,9 @@
     border: 2px solid $color-sunset_orange;
   }
 }
+.inpDisabled {
+  background-color: $color-oslo_gray;
+  &:hover {
+    border: none;
+  }
+}
