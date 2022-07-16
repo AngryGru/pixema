@@ -55,31 +55,35 @@ const MoviePage = () => {
               <ButtonGroup />
             </div>
             <div className="infoContainer">
-              <div className="genres">
-                {movieData!.genres
-                  .map((item: any) => {
-                    return item.display_name;
-                  })
-                  .join(" · ")}
-              </div>
+              {movieData!.genres && (
+                <div className="genres">
+                  {movieData!.genres
+                    .map((item: any) => {
+                      return item.display_name;
+                    })
+                    .join(" · ")}
+                </div>
+              )}
               <div className="title">{movieData!.name}</div>
-              <div className="raitingsContainer">
-                <div
-                  className={classNames("raiting", "pixemaRate", {
-                    ["highRaiting"]: +movieData!.rating >= 7,
-                    ["midRaiting"]:
-                      +movieData!.rating >= 4 && +movieData!.rating < 7,
-                    ["lowRaiting"]: +movieData!.rating < 4,
-                  })}
-                >
-                  {movieData!.rating}
+              {movieData!.rating && (
+                <div className="raitingsContainer">
+                  <div
+                    className={classNames("raiting", "pixemaRate", {
+                      ["highRaiting"]: +movieData!.rating >= 7,
+                      ["midRaiting"]:
+                        +movieData!.rating >= 4 && +movieData!.rating < 7,
+                      ["lowRaiting"]: +movieData!.rating < 4,
+                    })}
+                  >
+                    {movieData!.rating}
+                  </div>
+                  <div className="imdbRate">
+                    <IMDbIcon />
+                    <span>{movieData!.rating}</span>
+                  </div>
+                  <div className="runtime">{movieData!.runtime} min</div>
                 </div>
-                <div className="imdbRate">
-                  <IMDbIcon />
-                  <span>{movieData!.rating}</span>
-                </div>
-                <div className="runtime">{movieData!.runtime} min</div>
-              </div>
+              )}
               <p className="description">{movieData!.description}</p>
               <div className="table">
                 <table className="table">
@@ -100,7 +104,6 @@ const MoviePage = () => {
                         <td className="value">$ {movieData!.budget}</td>
                       </tr>
                     )}
-
                     <tr>
                       <td className="item">Actors</td>
                       <td className="value">
@@ -109,22 +112,26 @@ const MoviePage = () => {
                           .join(", ")}
                       </td>
                     </tr>
-                    <tr>
-                      <td className="item">Director</td>
-                      <td className="value">
-                        {movieCrew!
-                          .directing!.map((p: any) => `${p.name}`)
-                          .join(", ")}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="item">Writers</td>
-                      <td className="value">
-                        {movieCrew!
-                          .writing!.map((p: any) => `${p.name}`)
-                          .join(", ")}
-                      </td>
-                    </tr>
+                    {movieCrew!.directing!.length !== 0 && (
+                      <tr>
+                        <td className="item">Director</td>
+                        <td className="value">
+                          {movieCrew!
+                            .directing!.map((p: any) => `${p.name}`)
+                            .join(", ")}
+                        </td>
+                      </tr>
+                    )}
+                    {movieCrew!.writing!.length !== 0 && (
+                      <tr>
+                        <td className="item">Writers</td>
+                        <td className="value">
+                          {movieCrew!
+                            .writing!.map((p: any) => `${p.name}`)
+                            .join(", ")}
+                        </td>
+                      </tr>
+                    )}
                   </tbody>
                 </table>
               </div>

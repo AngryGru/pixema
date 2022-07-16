@@ -72,22 +72,26 @@ const MovieSlider = (data: any) => {
 
   return (
     <div className="sliderContainer">
-      <div className="sliderTitle"> Recommendations </div>
-      <Slider {...settings}>
-        {relatedMovie.map((item: any) => {
-          return (
-            <Card
-              id={item.id}
-              key={item.id}
-              poster={item.poster}
-              name={item.name}
-              tagline={item.tagline}
-              rating={item.rating}
-              onClick={() => onClick(item.id)}
-            />
-          );
-        })}
-      </Slider>
+      {relatedMovie.length !== 0 && (
+        <div>
+          <div className="sliderTitle"> Recommendations </div>
+          <Slider {...settings}>
+            {relatedMovie.map((item: any) => {
+              return (
+                <Card
+                  id={item.id}
+                  key={item.id}
+                  poster={item.poster}
+                  name={item.name}
+                  tagline={item.tagline}
+                  rating={item.rating}
+                  onClick={() => onClick(item.id)}
+                />
+              );
+            })}
+          </Slider>
+        </div>
+      )}
     </div>
   );
 };
