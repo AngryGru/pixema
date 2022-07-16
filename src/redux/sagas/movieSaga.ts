@@ -22,26 +22,39 @@ import {
   setPageLoading,
   loadTrendsList,
   setTrendsList,
+  setTotalCount,
+  setLastPage,
 } from "../reducers/movieReducer";
 
-function* getMovieListSaga() {
+function* getMovieListSaga(action: any) {
   yield put(setPageLoading(true));
   const accessToken = localStorage.getItem("jwtAccessToken");
-  const { status, data, problem } = yield call(getMovieListApi, accessToken);
+  const { status, data } = yield call(
+    getMovieListApi,
+    accessToken,
+    action.payload
+  );
   if (status === 200) {
+    console.log("MOVIE DATA", data);
     yield put(setMovieList(data.pagination.data));
+    yield put(setTotalCount(data.pagination.total));
+    yield put(setLastPage(data.pagination.last_page));
   }
   yield put(setPageLoading(false));
 }
 
-function* getTrendsListSaga() {
+function* getTrendsListSaga(action: any) {
   yield put(setPageLoading(true));
   const accessToken = localStorage.getItem("jwtAccessToken");
 
-  const { status, data } = yield call(getTrendsListApi, accessToken);
+  const { status, data } = yield call(
+    getTrendsListApi,
+    accessToken,
+    action.payload
+  );
 
   if (status === 200) {
-    console.log("SAGA TRENDS", data.pagination.data);
+    console.log("TRENDS DATA", data);
     yield put(setTrendsList(data.pagination.data));
   }
   yield put(setPageLoading(false));
@@ -98,8 +111,8 @@ function* getRelatedMovieListSaga(action: PayloadAction<string>) {
 
 function* getSearchResultsSaga(action: any) {
   yield put(setPageLoading(true));
+  yield put(setSearchResults([]));
   const accessToken = localStorage.getItem("jwtAccessToken");
-  yield put(setSearchResults(""));
 
   const { status, data } = yield call(
     getSearchResultsApi,

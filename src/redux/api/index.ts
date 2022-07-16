@@ -16,10 +16,10 @@ const loginUserApi = (data: {
   return API.post("/auth/login", data);
 };
 
-const getMovieListApi = (token: any) => {
+const getMovieListApi = (token: any, currentPage: any) => {
   return API.get(
     "/titles",
-    { order: "popularity:desc" },
+    { order: "popularity:desc", page: currentPage },
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -28,10 +28,10 @@ const getMovieListApi = (token: any) => {
   );
 };
 
-const getTrendsListApi = (token: any) => {
+const getTrendsListApi = (token: any, currentPage: any) => {
   return API.get(
     "/titles",
-    { order: "revenue:desc" },
+    { order: "revenue:desc", page: currentPage },
     {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -11,10 +11,12 @@ export type MovieReducerStateType = {
   relatedMovieList: MovieCardType[];
   searchResults: MovieCardType[];
   pageLoading: boolean;
+  totalCount: number;
+  lastPage: number;
 };
 
 const initialState = {
-  activeTab: "home",
+  activeTab: localStorage.getItem("activeTab") || "home",
   movieList: [],
   trendsList: [],
   singleMovie: null,
@@ -23,6 +25,8 @@ const initialState = {
   relatedMovieList: [],
   searchResults: [],
   pageLoading: false,
+  totalCount: 0,
+  lastPage: 1,
 };
 
 const movieSlice = createSlice({
@@ -31,8 +35,9 @@ const movieSlice = createSlice({
   reducers: {
     setActiveTab: (state, action: PayloadAction<string>) => {
       state.activeTab = action.payload;
+      localStorage.setItem("activeTab", action.payload);
     },
-    loadMovieList: (state, action) => {},
+    loadMovieList: (state, action: any) => {},
     setMovieList: (state, action) => {
       state.movieList = action.payload;
     },
@@ -61,6 +66,12 @@ const movieSlice = createSlice({
     setPageLoading: (state, action) => {
       state.pageLoading = action.payload;
     },
+    setTotalCount: (state, action) => {
+      state.totalCount = action.payload;
+    },
+    setLastPage: (state, action) => {
+      state.lastPage = action.payload;
+    },
   },
 });
 
@@ -79,6 +90,8 @@ export const {
   setPageLoading,
   loadTrendsList,
   setTrendsList,
+  setTotalCount,
+  setLastPage,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;
@@ -94,4 +107,6 @@ export const MovieSelector = {
   getRelatedMovieList: (state: any) => state.films.relatedMovieList,
   getSearchResults: (state: any) => state.films.searchResults,
   getPageLoading: (state: any) => state.films.pageLoading,
+  getTotalCount: (state: any) => state.films.totalCount,
+  getLastPage: (state: any) => state.films.lastPage,
 };

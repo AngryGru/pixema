@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   loadMovieList,
@@ -9,6 +9,8 @@ import "./Home.scss";
 import CardList from "../../components/CardList";
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/thorHummer.json";
+import Pagination from "../../components/Pagination";
+import classNames from "classnames";
 
 const Home = ({ isTrends }: any) => {
   const defaultOptions = {
@@ -21,14 +23,31 @@ const Home = ({ isTrends }: any) => {
   };
 
   const dispatch = useDispatch();
+  const lastPage = useSelector(MovieSelector.getLastPage);
+
+  ///////////////////   PAGINATION     ////////////////////
+  const totalCount = useSelector(MovieSelector.getTotalCount);
+  const pagesCount = Math.ceil(totalCount / 15);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    dispatch(isTrends ? loadTrendsList("") : loadMovieList(""));
-  }, [isTrends]);
+    dispatch(
+      isTrends ? loadTrendsList(currentPage) : loadMovieList(currentPage)
+    );
+  }, [isTrends, currentPage, currentPage]);
+
+  const onNextClick = () => {
+    setCurrentPage(currentPage + 1);
+  };
+  const onPrevClick = () => {
+    setCurrentPage(currentPage - 1);
+  };
+  const onLastClick = () => setCurrentPage(lastPage);
+  const onFirstClick = () => setCurrentPage(1);
+  ///////////////////   PAGINATION     ////////////////////
 
   const movieList = useSelector(MovieSelector.getMovieList);
   const trendsList = useSelector(MovieSelector.getTrendsList);
-  console.log("pageTRENDS", trendsList);
 
   const searchResults = useSelector(MovieSelector.getSearchResults);
   const isPageLoading = useSelector(MovieSelector.getPageLoading);
@@ -44,6 +63,21 @@ const Home = ({ isTrends }: any) => {
       ) : (
         <CardList data={movieList} />
       )}
+
+      <div
+        className={classNames("paginationContainer", {
+          ["displayNone"]: searchResults.length != 0,
+        })}
+      >
+        <Pagination
+          pageNum={currentPage}
+          pagesCount={pagesCount}
+          onPrevClick={onPrevClick}
+          onNextClick={onNextClick}
+          onFirstClick={onFirstClick}
+          onLastClick={onLastClick}
+        />
+      </div>
     </div>
   );
 };
