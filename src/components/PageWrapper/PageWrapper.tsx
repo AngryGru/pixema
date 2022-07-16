@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import "./PageWrapper.scss";
 import Header from "../Header";
 import Sidebar from "../Sidebar";
+import { Outlet } from "react-router-dom";
 
-const PageWrapper = ({ children }: any) => {
+const PageWrapper = () => {
   return (
     <div className={"pageContainer"}>
       <Header />
       <div className={"pageContent"}>
         <Sidebar />
-        {children}
+        <Outlet />
       </div>
     </div>
   );
