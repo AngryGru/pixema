@@ -108,3 +108,8 @@ export type InputProps = {
   onBlur?: (event: any) => void;
   onChange?: (event: any) => void;
 };
+
+export enum Theme {
+  Light = "light",
+  Dark = "dark",
+}

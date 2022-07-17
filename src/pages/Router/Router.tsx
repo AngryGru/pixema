@@ -26,13 +26,46 @@ const Router = () => {
     <BrowserRouter>
       {isLoggedIn ? (
         <Routes>
-          <Route path={"/"} element={<PageWrapper />}>
-            <Route path="home" element={<Home isTrends={false} />} />
-            <Route path="trends" element={<Home isTrends />} />
-            <Route path="cards-list/:id" element={<MoviePage />} />
-            <Route path="favorites" element={<Favorites />} />
-            <Route path="settings" element={<Settings />} />
-          </Route>
+          <Route
+            path="/home"
+            element={
+              <PageWrapper>
+                <Home isTrends={false} />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/trends"
+            element={
+              <PageWrapper>
+                <Home isTrends />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/cards-list/:id"
+            element={
+              <PageWrapper>
+                <MoviePage />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/favorites"
+            element={
+              <PageWrapper>
+                <Favorites />
+              </PageWrapper>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <PageWrapper>
+                <Settings />
+              </PageWrapper>
+            }
+          />
           <Route path="*" element={<Navigate to={"/home"} replace />} />
         </Routes>
       ) : (

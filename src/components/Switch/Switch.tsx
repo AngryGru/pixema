@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Switch.scss";
-
-const onClickTheme = () => {
-  // theme === Theme.Light
-  //   ? onChangeTheme(Theme.Dark)
-  //   : onChangeTheme(Theme.Light);
-};
+import { Theme } from "../../common/types";
+import { useThemeContext } from "../../context/themeModeContext";
 
 const Switch = () => {
+  const { theme, onChangeTheme = () => {} } = useThemeContext();
+
+  const onClickTheme = () => {
+    theme === Theme.Dark
+      ? onChangeTheme(Theme.Light)
+      : onChangeTheme(Theme.Dark);
+  };
+
   return (
     <div className="themeToggle">
       <label className="switch">

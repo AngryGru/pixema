@@ -102,6 +102,17 @@
   overflow: hidden;
 }
 
+.moviePageContainerLight {
+  .genres {
+    color: $color-oslo_gray;
+  }
+  .title,
+  .description,
+  .table {
+    color: $color-black;
+  }
+}
+
 @media (max-width: 1280px) {
   .moviePageContainer {
     padding: 0;

@@ -44,6 +44,16 @@
   left: 4px !important;
 }
 
+.sliderContainerLight {
+  .sliderTitle {
+    color: $color-black;
+  }
+  .slick-prev:before,
+  .slick-next:before {
+    color: black;
+  }
+}
+
 @media (max-width: 1480px) {
   .sliderContainer {
     max-width: 840px;

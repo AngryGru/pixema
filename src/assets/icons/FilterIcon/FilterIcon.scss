@@ -1,5 +1,17 @@
+@import "src/assets/colors.scss";
+
 .ellipse {
   position: relative;
   left: 3px;
   top: 1px;
+  fill: $color-cornflower_blue;
+}
+.filter {
+  stroke: $color-bombay;
+}
+.activeFilter {
+  stroke: $color-white;
+}
+.filterLight {
+  stroke: $color-oslo_gray;
 }

@@ -61,6 +61,20 @@
   gap: 40px;
 }
 
+.settingsContainerLight {
+  .itemTitle {
+    color: $color-black;
+  }
+  .itemContent {
+    background-color: $color-bombay;
+    color: $color-black;
+  }
+  .colorModeTitle,
+  .colorModeDescription {
+    color: $color-black;
+  }
+}
+
 @media (max-width: 1280px) {
   .settingsContainer {
     padding-right: 60px;

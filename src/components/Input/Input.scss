@@ -27,3 +27,11 @@
     border: none;
   }
 }
+
+.inputLight {
+  background-color: $color-white;
+  color: $color-black;
+  ::-webkit-input-placeholder {
+    color: red;
+  }
+}

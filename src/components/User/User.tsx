@@ -8,8 +8,15 @@ import { FaAngleRight, FaAngleDown } from "react-icons/fa";
 import Popup from "reactjs-popup";
 import { setLogout } from "../../redux/reducers/authReducer";
 import { setActiveTab } from "../../redux/reducers/movieReducer";
+import classNames from "classnames";
+import { Theme } from "../../common/types";
+import { ThemeModeProvider } from "../../context/ThemeModeProvider";
+import { useThemeContext } from "../../context/themeModeContext";
 
 const User = () => {
+  const { theme } = useThemeContext();
+  const isDarkTheme = theme === Theme.Dark;
+
   const [isAngleActive, setAngleActive] = useState(false);
 
   const dispatch = useDispatch();
@@ -36,7 +43,11 @@ const User = () => {
         setAngleActive(false);
       }}
       trigger={
-        <div className={"userContainer"}>
+        <div
+          className={classNames("userContainer", {
+            ["userContainerLight"]: !isDarkTheme,
+          })}
+        >
           <div className={"userInfo"}>
             <div className={"userIcon"}>
               {username ? username.charAt(0) : <UserIcon />}
@@ -49,7 +60,11 @@ const User = () => {
         </div>
       }
     >
-      <div className={"popupContent"}>
+      <div
+        className={classNames("popupContent", {
+          ["popupContentLight"]: !isDarkTheme,
+        })}
+      >
         <div className={"popupContentItem topItem"} onClick={onEditClick}>
           <p>Edit profile</p>
         </div>

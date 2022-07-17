@@ -94,6 +94,27 @@
   display: none;
 }
 
+.userContainerLight {
+  .userName,
+  .userAngle {
+    color: $color-black;
+  }
+}
+.popupContentLight {
+  background-color: $color-bombay;
+  border: 1px solid $color-oslo_gray;
+  color: $color-black;
+  .bottomItem {
+    color: $color-black;
+  }
+  .topItem,
+  .bottomItem {
+    &:hover {
+      background-color: $color-oslo_gray;
+    }
+  }
+}
+
 @media (max-width: 1280px) {
   .userContainer {
     display: none;

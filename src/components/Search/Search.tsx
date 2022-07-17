@@ -4,8 +4,14 @@ import classNames from "classnames";
 import FilterIcon from "../../assets/icons/FilterIcon";
 import { useDispatch } from "react-redux";
 import { loadSearchResults } from "../../redux/reducers/movieReducer";
+import { Theme } from "../../common/types";
+import { ThemeModeProvider } from "../../context/ThemeModeProvider";
+import { useThemeContext } from "../../context/themeModeContext";
 
 const Search = () => {
+  const { theme } = useThemeContext();
+  const isDarkTheme = theme === Theme.Dark;
+
   const [searchValue, setSearchValue] = useState("");
   const [status, setStatus] = useState(false);
 
@@ -21,7 +27,11 @@ const Search = () => {
   };
 
   return (
-    <div className={"form"}>
+    <div
+      className={classNames("form", {
+        ["formLight"]: !isDarkTheme,
+      })}
+    >
       <input
         value={searchValue}
         onChange={(e) => onSearchChange(e)}

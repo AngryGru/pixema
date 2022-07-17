@@ -1,6 +1,12 @@
 import React from "react";
+import classNames from "classnames";
+import { Theme } from "../../../common/types";
+import { useThemeContext } from "../../../context/themeModeContext";
 
 const EmptyStateIcon = () => {
+  const { theme } = useThemeContext();
+  const isDarkTheme = theme === Theme.Dark;
+
   return (
     <div>
       <svg
@@ -17,14 +23,14 @@ const EmptyStateIcon = () => {
           height="305.128"
           rx="20"
           transform="rotate(-15 0.00585938 58.8425)"
-          fill="#242426"
+          fill={isDarkTheme ? "#242426" : "#afb2b6"}
         />
         <rect
           width="227.35"
           height="305.128"
           rx="20"
           transform="matrix(0.965926 0.258819 0.258819 -0.965926 106.424 294.73)"
-          fill="#242426"
+          fill={isDarkTheme ? "#242426" : "#afb2b6"}
         />
         <rect
           x="70"
@@ -32,7 +38,7 @@ const EmptyStateIcon = () => {
           width="266"
           height="357"
           rx="20"
-          fill="#323537"
+          fill={isDarkTheme ? "#323537" : "#80858b"}
         />
         <path
           d="M208.307 228.811C207.953 228.808 207.614 228.668 207.362 228.42C207.24 228.295 207.143 228.147 207.077 227.985C207.006 227.826 206.969 227.654 206.97 227.479C206.968 227.302 207.005 227.127 207.077 226.965C207.106 226.882 207.148 226.804 207.202 226.734C207.245 226.662 207.299 226.596 207.362 226.539C207.892 226.038 208.722 226.038 209.252 226.539C209.773 227.059 209.773 227.9 209.252 228.42C209.001 228.67 208.661 228.81 208.307 228.811Z"
@@ -76,7 +82,7 @@ const EmptyStateIcon = () => {
         />
         <path
           d="M162.724 136.281H244.068V213.973H162.724V136.281Z"
-          fill="#323537"
+          fill={isDarkTheme ? "#323537" : "#80858b"}
         />
         <g opacity="0.5">
           <path

@@ -1,7 +1,13 @@
 import React from "react";
 import "./FilterIcon.scss";
+import classNames from "classnames";
+import { Theme } from "../../../common/types";
+import { ThemeModeProvider } from "../../../context/ThemeModeProvider";
+import { useThemeContext } from "../../../context/themeModeContext";
 
 const FilterIcon = ({ status }: any) => {
+  const { theme } = useThemeContext();
+  const isDarkTheme = theme === Theme.Dark;
   return (
     <div>
       <svg
@@ -13,9 +19,13 @@ const FilterIcon = ({ status }: any) => {
         className={"ellipse"}
         display={status ? "inline" : "none"}
       >
-        <circle cx="3" cy="3" r="3" fill="#7B61FF" />
+        <circle cx="3" cy="3" r="3" />
       </svg>
       <svg
+        className={classNames("filter", {
+          ["activeFilter"]: status,
+          ["filterLight"]: !isDarkTheme,
+        })}
         width="16"
         height="14"
         viewBox="0 0 16 14"
@@ -24,7 +34,6 @@ const FilterIcon = ({ status }: any) => {
       >
         <path
           d="M1 1L15 1M6 7H15M10 13H15"
-          stroke={status ? "#FFFF" : "#AFB2B6"}
           strokeWidth="2"
           strokeLinecap="round"
         />

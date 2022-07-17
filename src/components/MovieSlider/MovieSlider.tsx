@@ -11,8 +11,14 @@ import {
   MovieSelector,
 } from "../../redux/reducers/movieReducer";
 import { useParams } from "react-router-dom";
+import classNames from "classnames";
+import { Theme } from "../../common/types";
+import { useThemeContext } from "../../context/themeModeContext";
 
 const MovieSlider = (data: any) => {
+  const { theme } = useThemeContext();
+  const isDarkTheme = theme === Theme.Dark;
+
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -71,7 +77,11 @@ const MovieSlider = (data: any) => {
   };
 
   return (
-    <div className="sliderContainer">
+    <div
+      className={classNames("sliderContainer", {
+        ["sliderContainerLight"]: !isDarkTheme,
+      })}
+    >
       {relatedMovie.length !== 0 && (
         <div>
           <div className="sliderTitle"> Recommendations </div>

@@ -10,13 +10,14 @@ import "./MoviePage.scss";
 import ButtonGroup from "../../components/ButtonGroup";
 import IMDbIcon from "../../assets/icons/IMDbIcon";
 import MovieSlider from "../../components/MovieSlider";
-
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/thorHummer.json";
+import { Theme } from "../../common/types";
+import { useThemeContext } from "../../context/themeModeContext";
 
 const MoviePage = () => {
-  // const { theme } = useThemeContext();
-  // const isDarkTheme = theme === Theme.Dark;
+  const { theme } = useThemeContext();
+  const isDarkTheme = theme === Theme.Dark;
 
   const defaultOptions = {
     loop: true,
@@ -47,7 +48,11 @@ const MoviePage = () => {
         <Lottie options={defaultOptions} height={400} width={500} />
       ) : (
         movieData && (
-          <div className="moviePageContainer">
+          <div
+            className={classNames("moviePageContainer", {
+              ["moviePageContainerLight"]: !isDarkTheme,
+            })}
+          >
             <div className="posterContainer">
               <div className="poster">
                 <img src={movieData!.poster} alt="movie poster" />

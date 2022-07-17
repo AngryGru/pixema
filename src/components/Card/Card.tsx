@@ -3,6 +3,9 @@ import classNames from "classnames";
 import "./Card.scss";
 import { MovieCardType } from "../../common/types";
 import FireIcon from "../../assets/icons/FireIcon";
+import { Theme } from "../../common/types";
+import { ThemeModeProvider } from "../../context/ThemeModeProvider";
+import { useThemeContext } from "../../context/themeModeContext";
 
 const Card: FC<MovieCardType> = ({
   poster,
@@ -12,8 +15,16 @@ const Card: FC<MovieCardType> = ({
   isTrends,
   onClick,
 }) => {
+  const { theme } = useThemeContext();
+  const isDarkTheme = theme === Theme.Dark;
+
   return (
-    <div className="cardContainer" onClick={onClick}>
+    <div
+      className={classNames("cardContainer", {
+        ["cardContainerLight"]: !isDarkTheme,
+      })}
+      onClick={onClick}
+    >
       <div className="cardContent">
         <div className="cardPoster">
           {rating && (
