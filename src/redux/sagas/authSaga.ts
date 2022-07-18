@@ -65,8 +65,6 @@ export function* getUserInfoSaga() {
   const { status, data } = yield call(getUserInfoApi, "me", accessToken);
 
   if (status === 200) {
-    console.log("SAGA USERNAME", data);
-
     yield put(setUsername(data.user.display_name));
     yield put(setEmail(data.user.email));
   }

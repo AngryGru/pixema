@@ -3,7 +3,6 @@ import React, { FC } from "react";
 import "./Input.scss";
 import { InputProps } from "../../common/types";
 import { Theme } from "../../common/types";
-import { ThemeModeProvider } from "../../context/ThemeModeProvider";
 import { useThemeContext } from "../../context/themeModeContext";
 
 const Input: FC<InputProps> = ({

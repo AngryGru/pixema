@@ -104,7 +104,7 @@ export type InputProps = {
   className?: string;
   error?: boolean;
   placeholder?: string;
-  value?: string;
+  value?: any;
   onBlur?: (event: any) => void;
   onChange?: (event: any) => void;
 };

@@ -2,7 +2,6 @@ import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   loadMovieList,
-  loadTrendsList,
   MovieSelector,
 } from "../../redux/reducers/movieReducer";
 import "./Home.scss";
@@ -11,8 +10,9 @@ import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/thorHummer.json";
 import Pagination from "../../components/Pagination";
 import classNames from "classnames";
+import EmptyState from "../../components/EmptyState";
 
-const Home = ({ isTrends }: any) => {
+const Home = ({ activePage }: any) => {
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -23,18 +23,16 @@ const Home = ({ isTrends }: any) => {
   };
 
   const dispatch = useDispatch();
-  const lastPage = useSelector(MovieSelector.getLastPage);
 
-  ///////////////////   PAGINATION     ////////////////////
+  const lastPage = useSelector(MovieSelector.getLastPage);
   const totalCount = useSelector(MovieSelector.getTotalCount);
   const pagesCount = Math.ceil(totalCount / 15);
   const [currentPage, setCurrentPage] = useState(1);
+  const order = activePage === "home" ? "popularity:desc" : "revenue:desc";
 
   useEffect(() => {
-    dispatch(
-      isTrends ? loadTrendsList(currentPage) : loadMovieList(currentPage)
-    );
-  }, [isTrends, currentPage, currentPage]);
+    dispatch(loadMovieList({ order, currentPage }));
+  }, [activePage, order, currentPage]);
 
   const onNextClick = () => {
     setCurrentPage(currentPage + 1);
@@ -44,10 +42,9 @@ const Home = ({ isTrends }: any) => {
   };
   const onLastClick = () => setCurrentPage(lastPage);
   const onFirstClick = () => setCurrentPage(1);
-  ///////////////////   PAGINATION     ////////////////////
 
   const movieList = useSelector(MovieSelector.getMovieList);
-  const trendsList = useSelector(MovieSelector.getTrendsList);
+  const favoritesList = useSelector(MovieSelector.getFavoritesList);
 
   const searchResults = useSelector(MovieSelector.getSearchResults);
   const isPageLoading = useSelector(MovieSelector.getPageLoading);
@@ -56,14 +53,21 @@ const Home = ({ isTrends }: any) => {
     <div className="homeContainer">
       {isPageLoading ? (
         <Lottie options={defaultOptions} height={400} width={500} />
-      ) : searchResults.length != 0 ? (
-        <CardList data={searchResults} />
-      ) : isTrends ? (
-        <CardList data={trendsList} isTrends={true} />
+      ) : activePage === "home" ? (
+        <CardList
+          data={searchResults.length != 0 ? searchResults : movieList}
+          isTrends={false}
+        />
+      ) : activePage === "trends" ? (
+        <CardList
+          data={searchResults.length != 0 ? searchResults : movieList}
+          isTrends={true}
+        />
+      ) : favoritesList.length != 0 ? (
+        <CardList data={favoritesList} />
       ) : (
-        <CardList data={movieList} />
+        <EmptyState />
       )}
-
       <div
         className={classNames("paginationContainer", {
           ["displayNone"]: searchResults.length != 0,

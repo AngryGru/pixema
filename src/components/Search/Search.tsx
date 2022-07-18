@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import "./Search.scss";
 import classNames from "classnames";
 import FilterIcon from "../../assets/icons/FilterIcon";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loadSearchResults } from "../../redux/reducers/movieReducer";
+import {
+  FilterSelectors,
+  setFilterVisible,
+} from "../../redux/reducers/filterReducer";
 import { Theme } from "../../common/types";
-import { ThemeModeProvider } from "../../context/ThemeModeProvider";
 import { useThemeContext } from "../../context/themeModeContext";
+import FiltersForm from "../FiltersForm";
 
 const Search = () => {
   const { theme } = useThemeContext();
@@ -22,8 +26,14 @@ const Search = () => {
     dispatch(loadSearchResults(event.target.value));
   };
 
+  const isFiltersVisible = useSelector(FilterSelectors.getFilterVisible);
+  console.log("filter visible", isFiltersVisible);
+
   const onFilterClick = () => {
     status ? setStatus(false) : setStatus(true);
+    dispatch(
+      isFiltersVisible ? setFilterVisible(false) : setFilterVisible(true)
+    );
   };
 
   return (
@@ -42,6 +52,7 @@ const Search = () => {
       <div className={"iconDefault"} onClick={onFilterClick}>
         <FilterIcon status={status} />
       </div>
+      <FiltersForm />
     </div>
   );
 };

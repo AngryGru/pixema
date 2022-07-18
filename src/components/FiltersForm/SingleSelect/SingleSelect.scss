@@ -1,0 +1,110 @@
+.singleSelect__input-container,
+.singleSelect__menu-notice {
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: #ffffff !important;
+}
+
+.singleSelect__option,
+.singleSelect__menu-notice {
+  background-color: #323537 !important;
+  padding: 17px 20px 15px !important;
+}
+
+.singleSelect__menu-list,
+.singleSelect__value-container,
+.singleSelect__input-container {
+  padding: 0 !important;
+}
+
+.singleSelect__multi-value__remove svg,
+.singleSelect__dropdown-indicator,
+.singleSelect__clear-indicator,
+.singleSelect__option--is-focused {
+  cursor: pointer !important;
+}
+
+.singleSelect__multi-value__remove svg path,
+.singleSelect__dropdown-indicator svg path,
+.singleSelect__clear-indicator svg path {
+  fill: #afb2b6 !important;
+}
+
+.singleSelect__multi-value__remove:hover svg path,
+.singleSelect__dropdown-indicator:hover svg path,
+.singleSelect__clear-indicator:hover svg path {
+  fill: #ffffff !important;
+}
+
+.singleSelect__control {
+  background-color: #323537 !important;
+  min-height: 56px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  padding-left: 20px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  box-shadow: none !important;
+  cursor: text !important;
+  color: white;
+}
+.singleSelectLight__control {
+  background-color: white !important;
+  min-height: 56px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  padding-left: 20px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  box-shadow: none !important;
+  cursor: text !important;
+  color: #242426;
+}
+.singleSelect__indicator-separator,
+.singleSelect__clear-indicator,
+.singleSelectLight__indicator-separator,
+.singleSelectLight__clear-indicator {
+  display: none !important;
+}
+.singleSelect__input-container,
+.singleSelectLight__input-container {
+  margin: 0 !important;
+}
+.singleSelect__single-value {
+  color: white !important;
+  margin: 0 !important;
+}
+.singleSelect__menu {
+  margin: 0 !important;
+  margin-top: 8px !important;
+  background: #323537 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+.singleSelect__option {
+  cursor: pointer !important;
+  border-bottom: 1px solid #242426 !important;
+}
+.singleSelect__option:not(:last-child) {
+  border-bottom: 1px solid #242426 !important;
+}
+
+.singleSelect__option--is-focused {
+  transition: 0.3s !important;
+  background: #323537 !important;
+  color: #7b61ff !important;
+}
+.singleSelect__value-container {
+  gap: 12px !important;
+}
+
+.singleSelect__control__value-container {
+  padding-left: 20px !important;
+  cursor: text !important;
+}
+
+.singleSelect__control__input-container {
+  color: #ffffff !important;
+}

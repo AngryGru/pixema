@@ -6,7 +6,6 @@ import {
   getSingleMovieApi,
   getRelatedMovieListApi,
   getSearchResultsApi,
-  getTrendsListApi,
 } from "../api";
 import {
   loadMovieList,
@@ -20,8 +19,6 @@ import {
   loadSearchResults,
   setSearchResults,
   setPageLoading,
-  loadTrendsList,
-  setTrendsList,
   setTotalCount,
   setLastPage,
 } from "../reducers/movieReducer";
@@ -29,33 +26,25 @@ import {
 function* getMovieListSaga(action: any) {
   yield put(setPageLoading(true));
   const accessToken = localStorage.getItem("jwtAccessToken");
+
+  const { order, currentPage, type, genre, country, released, score } =
+    action.payload;
+
   const { status, data } = yield call(
     getMovieListApi,
     accessToken,
-    action.payload
+    order,
+    currentPage,
+    type,
+    genre,
+    country,
+    released,
+    score
   );
   if (status === 200) {
-    console.log("MOVIE DATA", data);
     yield put(setMovieList(data.pagination.data));
     yield put(setTotalCount(data.pagination.total));
     yield put(setLastPage(data.pagination.last_page));
-  }
-  yield put(setPageLoading(false));
-}
-
-function* getTrendsListSaga(action: any) {
-  yield put(setPageLoading(true));
-  const accessToken = localStorage.getItem("jwtAccessToken");
-
-  const { status, data } = yield call(
-    getTrendsListApi,
-    accessToken,
-    action.payload
-  );
-
-  if (status === 200) {
-    console.log("TRENDS DATA", data);
-    yield put(setTrendsList(data.pagination.data));
   }
   yield put(setPageLoading(false));
 }
@@ -132,6 +121,5 @@ export default function* movieWatcher() {
     takeLatest(loadSingleMovie, getSingleMovieSaga),
     takeLatest(loadRelatedMovieList, getRelatedMovieListSaga),
     takeLatest(loadSearchResults, getSearchResultsSaga),
-    takeLatest(loadTrendsList, getTrendsListSaga),
   ]);
 }

@@ -4,7 +4,7 @@ import { CardTypes, MovieCardType, TableDataTypes } from "../../common/types";
 export type MovieReducerStateType = {
   activeTab: string;
   movieList: CardTypes[];
-  trendsList: CardTypes[];
+  favoritesList: MovieCardType[];
   singleMovie: MovieCardType | null;
   singleMovieLoading: boolean;
   movieCrew: TableDataTypes | null;
@@ -18,7 +18,7 @@ export type MovieReducerStateType = {
 const initialState = {
   activeTab: localStorage.getItem("activeTab") || "home",
   movieList: [],
-  trendsList: [],
+  favoritesList: [],
   singleMovie: null,
   singleMovieLoading: false,
   movieCrew: null,
@@ -39,11 +39,21 @@ const movieSlice = createSlice({
     },
     loadMovieList: (state, action: any) => {},
     setMovieList: (state, action) => {
-      state.movieList = action.payload;
+      state.movieList = action.payload.map((card: MovieCardType) => {
+        return {
+          ...card,
+          is_saved: false,
+        };
+      });
     },
-    loadTrendsList: (state, action: any) => {},
-    setTrendsList: (state, action) => {
-      state.trendsList = action.payload;
+    setSavedStatus: (state: any, action: any) => {
+      const card = state.movieList.find((c: any) => c.id === action.payload.id);
+      if (card) {
+        card.is_saved = action.payload.action === true;
+      }
+    },
+    setFavoritesList: (state: any, action: any) => {
+      state.favoritesList = action.payload;
     },
     loadSingleMovie: (state, action) => {},
     setSingleMovie: (state, action) => {
@@ -88,8 +98,8 @@ export const {
   setSearchResults,
   loadSearchResults,
   setPageLoading,
-  loadTrendsList,
-  setTrendsList,
+  setFavoritesList,
+  setSavedStatus,
   setTotalCount,
   setLastPage,
 } = movieSlice.actions;
@@ -99,7 +109,7 @@ export default movieSlice.reducer;
 export const MovieSelector = {
   getActiveTab: (state: any) => state.films.activeTab,
   getMovieList: (state: any) => state.films.movieList,
-  getTrendsList: (state: any) => state.films.trendsList,
+  getFavoritesList: (state: any) => state.films.favoritesList,
   getSingleMovie: (state: any) => state.films.singleMovie,
   getSingleMovieCrew: (state: any) => state.films.singleMovieCrew,
   getSingleMovieLoading: (state: any) => state.films.singleMovieLoading,

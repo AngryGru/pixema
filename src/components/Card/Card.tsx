@@ -14,6 +14,7 @@ const Card: FC<MovieCardType> = ({
   rating,
   isTrends,
   onClick,
+  isSaved,
 }) => {
   const { theme } = useThemeContext();
   const isDarkTheme = theme === Theme.Dark;
@@ -40,7 +41,16 @@ const Card: FC<MovieCardType> = ({
               {rating}
             </div>
           )}
-
+          {/* {isSaved && (
+            <div
+              className={classNames("savedIcon", {
+                ["visible"]: isSaved,
+              })}
+            >
+              {isTrends && <FireIcon />}
+              {rating}
+            </div>
+          )} */}
           <img src={poster} alt="movie poster" />
         </div>
         <div className="cardText">

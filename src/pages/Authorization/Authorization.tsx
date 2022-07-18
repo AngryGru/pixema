@@ -1,15 +1,14 @@
 import React from "react";
 import "./Authorization.scss";
 import Logo from "../../components/Logo";
-import { Outlet } from "react-router-dom";
 
-const Authorization = () => {
+const Authorization = ({ children }: any) => {
   return (
     <div className="authContainer">
       <div className="authContainerLogo">
         <Logo />
       </div>
-      <Outlet />
+      {children}
       <div className={"allRightsText"}>
         <p>© All Rights Reserved</p>
       </div>

@@ -1,0 +1,141 @@
+.multiSelect__input-container,
+.multiSelect__multi-value__label,
+.multiSelect__option,
+.multiSelect__menu-notice {
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: #ffffff !important;
+}
+.multiSelect__option,
+.multiSelect__menu-notice {
+  background-color: #323537 !important;
+  padding: 17px 20px 15px !important;
+  cursor: pointer;
+}
+.multiSelect__multi-value__label,
+.multiSelect__multi-value__remove,
+.multiSelect__menu-list,
+.multiSelect__value-container,
+.multiSelect__value-container--is-multi,
+.multiSelect__input-container {
+  padding: 0 !important;
+}
+
+.multiSelect__multi-value__remove svg,
+.multiSelect__dropdown-indicator,
+.multiSelect__clear-indicator,
+.multiSelect__option--is-focused {
+  cursor: pointer !important;
+}
+
+.multiSelect__multi-value__remove svg path,
+.multiSelect__dropdown-indicator svg path,
+.multiSelect__clear-indicator svg path {
+  fill: #afb2b6 !important;
+}
+
+.multiSelect__multi-value__remove:hover svg path,
+.multiSelect__dropdown-indicator:hover svg path,
+.multiSelect__clear-indicator:hover svg path {
+  fill: #ffffff !important;
+}
+
+.multiSelect__control {
+  background-color: #323537 !important;
+  min-height: 56px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  padding-left: 20px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  box-shadow: none !important;
+  cursor: text !important;
+}
+.multiSelectLight__control {
+  background-color: white !important;
+  min-height: 56px !important;
+  border-radius: 10px !important;
+  border: none !important;
+  padding-left: 20px !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  box-shadow: none !important;
+  cursor: text !important;
+  color: #242426;
+}
+.multiSelect__multi-value {
+  background-color: #242426 !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  margin: 0 !important;
+  gap: 4px !important;
+}
+.multiSelectLight__multi-value {
+  border: 2px solid #afb2b6 !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  margin: 0 !important;
+  gap: 4px !important;
+  background-color: #afb2b6 !important;
+}
+
+.multiSelect__multi-value__remove svg,
+.multiSelectLight__multi-value__remove svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+.multiSelect__multi-value__remove svg path,
+.multiSelectLight__multi-value__remove svg path {
+  width: 10px !important;
+  height: 10px !important;
+}
+.multiSelect__multi-value__remove:hover {
+  background-color: inherit !important;
+  cursor: pointer !important;
+}
+.multiSelectLight__multi-value__remove:hover {
+  background-color: inherit !important;
+  color: #242426 !important;
+  cursor: pointer !important;
+}
+
+.multiSelect__indicator-separator,
+.multiSelect__clear-indicator,
+.multiSelectLight__indicator-separator,
+.multiSelectLight__clear-indicator {
+  display: none !important;
+}
+
+.multiSelect__menu {
+  margin: 0 !important;
+  margin-top: 8px !important;
+  background: #323537 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+.multiSelectLight__menu {
+  margin: 0 !important;
+  margin-top: 8px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+.multiSelectLight__option {
+  cursor: pointer;
+  padding: 17px 20px 15px !important;
+}
+.multiSelect__option:not(:last-child) {
+  border-bottom: 1px solid #242426;
+}
+.multiSelect__option--is-focused {
+  transition: 0.3s !important;
+  background: #323537 !important;
+  color: #7b61ff !important;
+}
+.multiSelectLight__option--is-focused {
+  transition: 0.3s !important;
+  background: #d2dee7 !important;
+  color: #7b61ff !important;
+}

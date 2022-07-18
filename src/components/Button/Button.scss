@@ -34,3 +34,11 @@
     background-color: $color-oslo_gray;
   }
 }
+
+.sortBtn {
+  background-color: #242426;
+  border: 2px solid #323537;
+  &:hover {
+    background-color: #323537;
+  }
+}

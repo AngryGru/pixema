@@ -8,6 +8,7 @@ import createSagaMiddleware from "redux-saga";
 
 import movieReducer from "./reducers/movieReducer";
 import authReducer from "./reducers/authReducer";
+import filterReducer from "./reducers/filterReducer";
 import rootSaga from "./sagas/rootSaga";
 
 declare global {
@@ -23,6 +24,7 @@ const sagaMiddleware = createSagaMiddleware();
 const rootReducer = combineReducers({
   auth: authReducer,
   films: movieReducer,
+  filter: filterReducer,
 });
 
 export const store = configureStore({

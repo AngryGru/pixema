@@ -5,6 +5,19 @@ body {
   background-color: $color-black;
   margin: 0;
   height: 100%;
+  &::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+    background-color: $color-cape_code;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $color-bombay;
+    border-radius: 9em;
+    box-shadow: inset 1px 1px 10px #f3faf7;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: $color-oslo_gray;
+  }
 }
 .light {
   background-color: $color-white;

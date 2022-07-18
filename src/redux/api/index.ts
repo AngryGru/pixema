@@ -16,22 +16,19 @@ const loginUserApi = (data: {
   return API.post("/auth/login", data);
 };
 
-const getMovieListApi = (token: any, currentPage: any) => {
+const getMovieListApi = (
+  token: any,
+  order: any,
+  currentPage: any,
+  type: any,
+  genre: any,
+  country: any,
+  released: any,
+  score: any
+) => {
   return API.get(
     "/titles",
-    { order: "popularity:desc", page: currentPage },
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-};
-
-const getTrendsListApi = (token: any, currentPage: any) => {
-  return API.get(
-    "/titles",
-    { order: "revenue:desc", page: currentPage },
+    { order, page: currentPage, type, genre, country, released, score },
     {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -96,5 +93,4 @@ export {
   getRelatedMovieListApi,
   getUserInfoApi,
   getSearchResultsApi,
-  getTrendsListApi,
 };

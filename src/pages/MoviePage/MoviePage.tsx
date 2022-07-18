@@ -1,10 +1,12 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import classNames from "classnames";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
   loadSingleMovie,
   MovieSelector,
+  setSavedStatus,
+  setFavoritesList,
 } from "../../redux/reducers/movieReducer";
 import "./MoviePage.scss";
 import ButtonGroup from "../../components/ButtonGroup";
@@ -12,7 +14,7 @@ import IMDbIcon from "../../assets/icons/IMDbIcon";
 import MovieSlider from "../../components/MovieSlider";
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/thorHummer.json";
-import { Theme } from "../../common/types";
+import { MovieCardType, Theme } from "../../common/types";
 import { useThemeContext } from "../../context/themeModeContext";
 
 const MoviePage = () => {
@@ -42,6 +44,17 @@ const MoviePage = () => {
 
   const singleMovieLoading = useSelector(MovieSelector.getSingleMovieLoading);
 
+  // const [saveStatus, setSaveStatus] = useState(false);
+
+  const onSaveClick = (id: any, action: string) => {
+    // saveStatus ? setSaveStatus(false) : setSaveStatus(true);
+    console.log("SAVED MOVIE", movieData);
+
+    if (action === "save" || action === "unset") {
+      dispatch(setSavedStatus({ id, action }));
+    }
+  };
+
   return (
     <div className="moviePageWrapper">
       {singleMovieLoading ? (
@@ -57,7 +70,14 @@ const MoviePage = () => {
               <div className="poster">
                 <img src={movieData!.poster} alt="movie poster" />
               </div>
-              <ButtonGroup />
+              <ButtonGroup
+                onSaveClick={() =>
+                  onSaveClick(
+                    movieData.id,
+                    movieData.isSaved ? "unset" : "save"
+                  )
+                }
+              />
             </div>
             <div className="infoContainer">
               {movieData!.genres && (
