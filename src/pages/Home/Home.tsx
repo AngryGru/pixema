@@ -54,15 +54,23 @@ const Home = ({ activePage }: any) => {
       {isPageLoading ? (
         <Lottie options={defaultOptions} height={400} width={500} />
       ) : activePage === "home" ? (
-        <CardList
-          data={searchResults.length != 0 ? searchResults : movieList}
-          isTrends={false}
-        />
+        movieList.length === 0 ? (
+          <EmptyState message={"Oops... Maybe another time, lovely muffin."} />
+        ) : (
+          <CardList
+            data={searchResults.length != 0 ? searchResults : movieList}
+            isTrends={false}
+          />
+        )
       ) : activePage === "trends" ? (
-        <CardList
-          data={searchResults.length != 0 ? searchResults : movieList}
-          isTrends={true}
-        />
+        movieList.length === 0 ? (
+          <EmptyState message={"Oops... Maybe another time, lovely muffin."} />
+        ) : (
+          <CardList
+            data={searchResults.length != 0 ? searchResults : movieList}
+            isTrends={true}
+          />
+        )
       ) : favoritesList.length != 0 ? (
         <CardList data={favoritesList} />
       ) : (
@@ -73,14 +81,16 @@ const Home = ({ activePage }: any) => {
           ["displayNone"]: searchResults.length != 0,
         })}
       >
-        <Pagination
-          pageNum={currentPage}
-          pagesCount={pagesCount}
-          onPrevClick={onPrevClick}
-          onNextClick={onNextClick}
-          onFirstClick={onFirstClick}
-          onLastClick={onLastClick}
-        />
+        {movieList.length !== 0 && (
+          <Pagination
+            pageNum={currentPage}
+            pagesCount={pagesCount}
+            onPrevClick={onPrevClick}
+            onNextClick={onNextClick}
+            onFirstClick={onFirstClick}
+            onLastClick={onLastClick}
+          />
+        )}
       </div>
     </div>
   );

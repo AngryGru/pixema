@@ -27,7 +27,6 @@ const Search = () => {
   };
 
   const isFiltersVisible = useSelector(FilterSelectors.getFilterVisible);
-  console.log("filter visible", isFiltersVisible);
 
   const onFilterClick = () => {
     status ? setStatus(false) : setStatus(true);

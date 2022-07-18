@@ -42,6 +42,7 @@ function* getMovieListSaga(action: any) {
     score
   );
   if (status === 200) {
+    console.log(data);
     yield put(setMovieList(data.pagination.data));
     yield put(setTotalCount(data.pagination.total));
     yield put(setLastPage(data.pagination.last_page));
