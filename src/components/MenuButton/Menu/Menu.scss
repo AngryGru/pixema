@@ -1,10 +1,42 @@
+@import "src/assets/colors.scss";
+
 .menu {
+  position: relative;
   display: none;
+  background-color: $color-shark;
+  padding: 60px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  height: 100vh;
+  border-radius: 10px 0px;
 }
-.active {
-  background-color: yellow;
+.activeMenu {
   display: block;
 }
-.menuContent {
-  border: 2px solid purple;
+
+.menuClose {
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: $color-bombay;
+}
+
+.menuLight {
+  background-color: $color-bombay;
+  border-left: 1px solid $color-oslo_gray;
+
+  .menuClose {
+    color: $color-outer_space;
+  }
+  .menuItem {
+    color: $color-shark;
+    fill: $color-shark;
+  }
+  .activeTab {
+    color: $color-cornflower_blue;
+    fill: $color-cornflower_blue;
+  }
 }

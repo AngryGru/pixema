@@ -60,7 +60,6 @@ const FormSelect = () => {
   const isFilterVisible = useSelector(FilterSelectors.getFilterVisible);
 
   const onClickFiltersClose = () => {
-    dispatch(setFilterStatus(false));
     dispatch(
       isFilterVisible ? setFilterVisible(false) : setFilterVisible(true)
     );

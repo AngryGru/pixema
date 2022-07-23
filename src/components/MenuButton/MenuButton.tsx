@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import "./MenuButton.scss";
-import Menu from "./Menu/Menu";
-import NavLinks from "../Sidebar/NavLinks";
 
-const MenuButton = () => {
-  const [isMenuActive, setMenuActive] = useState(false);
-
+const MenuButton = ({ onClick }: any) => {
   return (
     <div className={`menuContainer`}>
-      <div className={`menuBtnContainer`} onClick={() => setMenuActive(true)}>
+      <div className={`menuBtnContainer`} onClick={() => onClick()}>
         <svg
           width="16"
           height="14"
@@ -24,16 +20,6 @@ const MenuButton = () => {
           />
         </svg>
       </div>
-
-      {/* <Menu active={isMenuActive} setActive={setMenuActive}>
-        <NavLinks />
-        <button
-          className="logoutCancelBtn"
-          onClick={() => setMenuActive(false)}
-        >
-          Cancel
-        </button>
-      </Menu> */}
     </div>
   );
 };
