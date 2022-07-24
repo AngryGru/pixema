@@ -6,6 +6,9 @@ import {
   getSingleMovieApi,
   getRelatedMovieListApi,
   getSearchResultsApi,
+  getWatchlistIdApi,
+  getWatchlistApi,
+  addToWatchlistApi,
 } from "../api";
 import {
   loadMovieList,
@@ -21,6 +24,11 @@ import {
   setPageLoading,
   setTotalCount,
   setLastPage,
+  loadWatchlistId,
+  addToWatchlist,
+  loadWatchlist,
+  setWatchlist,
+  setWatchlistId,
 } from "../reducers/movieReducer";
 
 function* getMovieListSaga(action: any) {
@@ -42,7 +50,6 @@ function* getMovieListSaga(action: any) {
     score
   );
   if (status === 200) {
-    console.log(data);
     yield put(setMovieList(data.pagination.data));
     yield put(setTotalCount(data.pagination.total));
     yield put(setLastPage(data.pagination.last_page));
@@ -64,7 +71,6 @@ function* getSingleMovieSaga(action: PayloadAction<string>) {
 
   if (status === 200) {
     yield put(setSingleMovie(data.title));
-    console.log(data.title);
 
     const movieCrewFilter = (types: string[]) => {
       return types.reduce((object: any, type: any) => {
@@ -116,11 +122,54 @@ function* getSearchResultsSaga(action: any) {
   yield put(setPageLoading(false));
 }
 
+function* getWatchListIdSaga(action: any) {
+  const accessToken = localStorage.getItem("jwtAccessToken");
+
+  const { status, data } = yield call(
+    getWatchlistIdApi,
+    action.payload,
+    accessToken
+  );
+  if (status === 200) {
+    const watchlistId = data.pagination.data.map((item: any) => {
+      if (item.name === "watchlist") {
+        return item.id;
+      }
+    });
+    localStorage.setItem("watchlistId", watchlistId);
+    yield put(setWatchlistId(watchlistId));
+  }
+}
+
+function* getWatchListSaga(action: any) {
+  yield put(setPageLoading(true));
+  const accessToken = localStorage.getItem("jwtAccessToken");
+
+  const { status, data } = yield call(getWatchlistApi, accessToken);
+
+  if (status === 200) {
+    yield put(setWatchlist(data.items.data));
+  }
+  yield put(setPageLoading(false));
+}
+
+function* addToWatchListSaga(action: any) {
+  yield put(setPageLoading(true));
+  const accessToken = localStorage.getItem("jwtAccessToken");
+
+  yield call(addToWatchlistApi, action.payload, accessToken);
+
+  yield put(setPageLoading(false));
+}
+
 export default function* movieWatcher() {
   yield all([
     takeLatest(loadMovieList, getMovieListSaga),
     takeLatest(loadSingleMovie, getSingleMovieSaga),
     takeLatest(loadRelatedMovieList, getRelatedMovieListSaga),
     takeLatest(loadSearchResults, getSearchResultsSaga),
+    takeLatest(loadWatchlistId, getWatchListIdSaga),
+    takeLatest(loadWatchlist, getWatchListSaga),
+    takeLatest(addToWatchlist, addToWatchListSaga),
   ]);
 }

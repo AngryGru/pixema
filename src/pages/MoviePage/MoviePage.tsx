@@ -5,8 +5,7 @@ import { useParams } from "react-router-dom";
 import {
   loadSingleMovie,
   MovieSelector,
-  setSavedStatus,
-  setFavoritesList,
+  addToWatchlist,
 } from "../../redux/reducers/movieReducer";
 import "./MoviePage.scss";
 import ButtonGroup from "../../components/ButtonGroup";
@@ -44,15 +43,8 @@ const MoviePage = () => {
 
   const singleMovieLoading = useSelector(MovieSelector.getSingleMovieLoading);
 
-  // const [saveStatus, setSaveStatus] = useState(false);
-
-  const onSaveClick = (id: any, action: string) => {
-    // saveStatus ? setSaveStatus(false) : setSaveStatus(true);
-    console.log("SAVED MOVIE", movieData);
-
-    if (action === "save" || action === "unset") {
-      dispatch(setSavedStatus({ id, action }));
-    }
+  const onSaveClick = (data: any) => {
+    dispatch(addToWatchlist(data));
   };
 
   return (
@@ -72,10 +64,7 @@ const MoviePage = () => {
               </div>
               <ButtonGroup
                 onSaveClick={() =>
-                  onSaveClick(
-                    movieData.id,
-                    movieData.isSaved ? "unset" : "save"
-                  )
+                  onSaveClick({ itemId: movieData.id, itemType: "title" })
                 }
               />
             </div>

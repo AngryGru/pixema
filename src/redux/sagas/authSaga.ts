@@ -34,8 +34,6 @@ function* registerUserSaga(action: PayloadAction<RegisterUser>) {
 
   if (status === 200) {
     callback();
-  } else {
-    console.log(problem);
   }
 }
 
@@ -43,13 +41,11 @@ function* loginUserSaga(action: any) {
   yield put(setAuthLoading(true));
 
   const userData = action.payload;
-  const { status, data, problem } = yield call(loginUserApi, userData);
+  const { status, data } = yield call(loginUserApi, userData);
 
   if (status === 200) {
     localStorage.setItem("jwtAccessToken", data.user.access_token);
     yield put(setLogStatus(true));
-  } else {
-    console.error("ОШИБКА ПРИ ЛОГИНЕ", problem);
   }
   yield put(setAuthLoading(false));
 }

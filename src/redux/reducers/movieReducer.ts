@@ -4,7 +4,6 @@ import { CardTypes, MovieCardType, TableDataTypes } from "../../common/types";
 export type MovieReducerStateType = {
   activeTab: string;
   movieList: CardTypes[];
-  favoritesList: MovieCardType[];
   singleMovie: MovieCardType | null;
   singleMovieLoading: boolean;
   movieCrew: TableDataTypes | null;
@@ -13,12 +12,13 @@ export type MovieReducerStateType = {
   pageLoading: boolean;
   totalCount: number;
   lastPage: number;
+  watchlistId: number;
+  watchlist: MovieCardType[];
 };
 
 const initialState = {
   activeTab: localStorage.getItem("activeTab") || "home",
   movieList: [],
-  favoritesList: [],
   singleMovie: null,
   singleMovieLoading: false,
   movieCrew: null,
@@ -27,6 +27,8 @@ const initialState = {
   pageLoading: false,
   totalCount: 0,
   lastPage: 1,
+  watchlistId: null,
+  watchlist: [],
 };
 
 const movieSlice = createSlice({
@@ -39,21 +41,7 @@ const movieSlice = createSlice({
     },
     loadMovieList: (state, action: any) => {},
     setMovieList: (state, action) => {
-      state.movieList = action.payload.map((card: MovieCardType) => {
-        return {
-          ...card,
-          is_saved: false,
-        };
-      });
-    },
-    setSavedStatus: (state: any, action: any) => {
-      const card = state.movieList.find((c: any) => c.id === action.payload.id);
-      if (card) {
-        card.is_saved = action.payload.action === true;
-      }
-    },
-    setFavoritesList: (state: any, action: any) => {
-      state.favoritesList = action.payload;
+      state.movieList = action.payload;
     },
     loadSingleMovie: (state, action) => {},
     setSingleMovie: (state, action) => {
@@ -82,6 +70,15 @@ const movieSlice = createSlice({
     setLastPage: (state, action) => {
       state.lastPage = action.payload;
     },
+    loadWatchlistId: (state, action) => {},
+    setWatchlistId: (state, action) => {
+      state.watchlistId = action.payload;
+    },
+    loadWatchlist: (state, action) => {},
+    setWatchlist: (state, action) => {
+      state.watchlist = action.payload;
+    },
+    addToWatchlist: (state, action) => {},
   },
 });
 
@@ -98,10 +95,13 @@ export const {
   setSearchResults,
   loadSearchResults,
   setPageLoading,
-  setFavoritesList,
-  setSavedStatus,
   setTotalCount,
   setLastPage,
+  loadWatchlistId,
+  setWatchlistId,
+  loadWatchlist,
+  setWatchlist,
+  addToWatchlist,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;
@@ -109,7 +109,6 @@ export default movieSlice.reducer;
 export const MovieSelector = {
   getActiveTab: (state: any) => state.films.activeTab,
   getMovieList: (state: any) => state.films.movieList,
-  getFavoritesList: (state: any) => state.films.favoritesList,
   getSingleMovie: (state: any) => state.films.singleMovie,
   getSingleMovieCrew: (state: any) => state.films.singleMovieCrew,
   getSingleMovieLoading: (state: any) => state.films.singleMovieLoading,
@@ -119,4 +118,6 @@ export const MovieSelector = {
   getPageLoading: (state: any) => state.films.pageLoading,
   getTotalCount: (state: any) => state.films.totalCount,
   getLastPage: (state: any) => state.films.lastPage,
+  getWatchlistId: (state: any) => state.films.watchlistId,
+  getWatchlist: (state: any) => state.films.watchlist,
 };

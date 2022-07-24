@@ -85,6 +85,41 @@ const getSearchResultsApi = (query: any, token: any) => {
   );
 };
 
+const getWatchlistIdApi = (id: any, token: any) => {
+  return API.get(
+    `/user-profile/${id}/lists`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
+
+const watchlistId = localStorage.getItem("watchlistId");
+
+const getWatchlistApi = (token: any) => {
+  return API.get(
+    `/lists/${watchlistId}`,
+    {},
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+};
+
+const addToWatchlistApi = (data: any, token: any) => {
+  return API.post(`/lists/${watchlistId}/add`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+};
+
 export {
   registerUserApi,
   loginUserApi,
@@ -93,4 +128,7 @@ export {
   getRelatedMovieListApi,
   getUserInfoApi,
   getSearchResultsApi,
+  getWatchlistIdApi,
+  getWatchlistApi,
+  addToWatchlistApi,
 };

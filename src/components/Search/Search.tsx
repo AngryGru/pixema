@@ -29,7 +29,6 @@ const Search = () => {
   const isFiltersVisible = useSelector(FilterSelectors.getFilterVisible);
 
   const onFilterClick = () => {
-    status ? setStatus(false) : setStatus(true);
     dispatch(
       isFiltersVisible ? setFilterVisible(false) : setFilterVisible(true)
     );
@@ -49,7 +48,7 @@ const Search = () => {
         className={"inputDefault"}
       />
       <div className={"iconDefault"} onClick={onFilterClick}>
-        <FilterIcon status={status} />
+        <FilterIcon />
       </div>
       <FiltersForm />
     </div>

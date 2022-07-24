@@ -2,6 +2,8 @@ import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   loadMovieList,
+  loadWatchlistId,
+  loadWatchlist,
   MovieSelector,
 } from "../../redux/reducers/movieReducer";
 import "./Home.scss";
@@ -32,6 +34,8 @@ const Home = ({ activePage }: any) => {
 
   useEffect(() => {
     dispatch(loadMovieList({ order, currentPage }));
+    dispatch(loadWatchlistId("me"));
+    dispatch(loadWatchlist(""));
   }, [activePage, order, currentPage]);
 
   const onNextClick = () => {
@@ -44,7 +48,7 @@ const Home = ({ activePage }: any) => {
   const onFirstClick = () => setCurrentPage(1);
 
   const movieList = useSelector(MovieSelector.getMovieList);
-  const favoritesList = useSelector(MovieSelector.getFavoritesList);
+  const watchlist = useSelector(MovieSelector.getWatchlist);
 
   const searchResults = useSelector(MovieSelector.getSearchResults);
   const isPageLoading = useSelector(MovieSelector.getPageLoading);
@@ -71,8 +75,8 @@ const Home = ({ activePage }: any) => {
             isTrends={true}
           />
         )
-      ) : favoritesList.length != 0 ? (
-        <CardList data={favoritesList} />
+      ) : activePage === "favorites" ? (
+        <CardList data={watchlist} />
       ) : (
         <EmptyState />
       )}
@@ -81,7 +85,7 @@ const Home = ({ activePage }: any) => {
           ["displayNone"]: searchResults.length != 0,
         })}
       >
-        {movieList.length !== 0 && (
+        {(movieList.length !== 0 && activePage === "favorites") || (
           <Pagination
             pageNum={currentPage}
             pagesCount={pagesCount}
