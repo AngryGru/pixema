@@ -9,6 +9,7 @@ import {
   getWatchlistIdApi,
   getWatchlistApi,
   addToWatchlistApi,
+  removeFromWatchlistApi,
 } from "../api";
 import {
   loadMovieList,
@@ -26,6 +27,7 @@ import {
   setLastPage,
   loadWatchlistId,
   addToWatchlist,
+  removeFromWatchlist,
   loadWatchlist,
   setWatchlist,
   setWatchlistId,
@@ -154,12 +156,13 @@ function* getWatchListSaga(action: any) {
 }
 
 function* addToWatchListSaga(action: any) {
-  yield put(setPageLoading(true));
   const accessToken = localStorage.getItem("jwtAccessToken");
-
   yield call(addToWatchlistApi, action.payload, accessToken);
+}
 
-  yield put(setPageLoading(false));
+function* removeFromWatchListSaga(action: any) {
+  const accessToken = localStorage.getItem("jwtAccessToken");
+  yield call(removeFromWatchlistApi, action.payload, accessToken);
 }
 
 export default function* movieWatcher() {
@@ -171,5 +174,6 @@ export default function* movieWatcher() {
     takeLatest(loadWatchlistId, getWatchListIdSaga),
     takeLatest(loadWatchlist, getWatchListSaga),
     takeLatest(addToWatchlist, addToWatchListSaga),
+    takeLatest(removeFromWatchlist, removeFromWatchListSaga),
   ]);
 }

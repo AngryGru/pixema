@@ -7,9 +7,10 @@ import Card from "../Card";
 type CardListProps = {
   data: MovieCardType[];
   isTrends?: boolean;
+  isSaved?: boolean;
 };
 
-const CardList: FC<CardListProps> = ({ data, isTrends }) => {
+const CardList: FC<CardListProps> = ({ data, isTrends, isSaved }) => {
   const navigate = useNavigate();
 
   const onCardClick = (id: string) => {
@@ -27,6 +28,7 @@ const CardList: FC<CardListProps> = ({ data, isTrends }) => {
           tagline={item.tagline}
           rating={item.rating}
           isTrends={isTrends}
+          isSaved={isSaved}
         />
       </div>
     );

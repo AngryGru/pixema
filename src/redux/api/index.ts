@@ -120,6 +120,15 @@ const addToWatchlistApi = (data: any, token: any) => {
   });
 };
 
+const removeFromWatchlistApi = (data: any, token: any) => {
+  return API.post(`/lists/${watchlistId}/remove`, data, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+};
+
 export {
   registerUserApi,
   loginUserApi,
@@ -131,4 +140,5 @@ export {
   getWatchlistIdApi,
   getWatchlistApi,
   addToWatchlistApi,
+  removeFromWatchlistApi,
 };

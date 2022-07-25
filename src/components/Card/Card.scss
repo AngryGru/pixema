@@ -77,6 +77,18 @@
   width: 45px;
   gap: 5px;
 }
+.savedIcon {
+  background-color: $color-outer_space;
+  box-sizing: border-box;
+  width: 37px;
+  border-radius: 5px;
+  padding: 1px;
+  text-align: center;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  fill: $color-cornflower_blue;
+}
 
 .cardContainerLight {
   .cardTitle {

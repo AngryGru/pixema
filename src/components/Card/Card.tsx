@@ -4,8 +4,8 @@ import "./Card.scss";
 import { MovieCardType } from "../../common/types";
 import FireIcon from "../../assets/icons/FireIcon";
 import { Theme } from "../../common/types";
-import { ThemeModeProvider } from "../../context/ThemeModeProvider";
 import { useThemeContext } from "../../context/themeModeContext";
+import SaveIcon from "../../assets/icons/SaveIcon";
 
 const Card: FC<MovieCardType> = ({
   poster,
@@ -41,16 +41,11 @@ const Card: FC<MovieCardType> = ({
               {rating}
             </div>
           )}
-          {/* {isSaved && (
-            <div
-              className={classNames("savedIcon", {
-                ["visible"]: isSaved,
-              })}
-            >
-              {isTrends && <FireIcon />}
-              {rating}
+          {isSaved && (
+            <div className={classNames("savedIcon")}>
+              <SaveIcon width={"20"} height={"20"} isActive={true} />
             </div>
-          )} */}
+          )}
           <img src={poster} alt="movie poster" />
         </div>
         <div className="cardText">

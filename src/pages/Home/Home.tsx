@@ -76,7 +76,7 @@ const Home = ({ activePage }: any) => {
           />
         )
       ) : activePage === "favorites" ? (
-        <CardList data={watchlist} />
+        <CardList data={watchlist} isSaved={true} />
       ) : (
         <EmptyState />
       )}

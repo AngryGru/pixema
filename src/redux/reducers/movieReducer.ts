@@ -79,6 +79,7 @@ const movieSlice = createSlice({
       state.watchlist = action.payload;
     },
     addToWatchlist: (state, action) => {},
+    removeFromWatchlist: (state, action) => {},
   },
 });
 
@@ -102,6 +103,7 @@ export const {
   loadWatchlist,
   setWatchlist,
   addToWatchlist,
+  removeFromWatchlist,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

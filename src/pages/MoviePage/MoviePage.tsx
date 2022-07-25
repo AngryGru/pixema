@@ -6,6 +6,8 @@ import {
   loadSingleMovie,
   MovieSelector,
   addToWatchlist,
+  removeFromWatchlist,
+  loadWatchlist,
 } from "../../redux/reducers/movieReducer";
 import "./MoviePage.scss";
 import ButtonGroup from "../../components/ButtonGroup";
@@ -43,8 +45,19 @@ const MoviePage = () => {
 
   const singleMovieLoading = useSelector(MovieSelector.getSingleMovieLoading);
 
+  const watchlist = useSelector(MovieSelector.getWatchlist);
+  let isMovieSaved = Boolean(
+    watchlist.find((item: any) => Number(item.id) === Number(cardId))
+  );
+
   const onSaveClick = (data: any) => {
-    dispatch(addToWatchlist(data));
+    if (isMovieSaved) {
+      dispatch(removeFromWatchlist(data));
+      dispatch(loadWatchlist(""));
+    } else {
+      dispatch(addToWatchlist(data));
+      dispatch(loadWatchlist(""));
+    }
   };
 
   return (
@@ -63,6 +76,7 @@ const MoviePage = () => {
                 <img src={movieData!.poster} alt="movie poster" />
               </div>
               <ButtonGroup
+                isSaveBtnActive={isMovieSaved}
                 onSaveClick={() =>
                   onSaveClick({ itemId: movieData.id, itemType: "title" })
                 }
