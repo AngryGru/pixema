@@ -36,9 +36,12 @@
 }
 
 .sortBtn {
-  background-color: #242426;
-  border: 2px solid #323537;
+  background-color: $color-shark;
+  border: 2px solid $color-outer_space;
   &:hover {
-    background-color: #323537;
+    background-color: $color-outer_space;
   }
+}
+.activeSortBtn {
+  border: 2px solid $color-heliotrope;
 }

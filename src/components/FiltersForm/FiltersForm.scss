@@ -48,12 +48,6 @@
   display: flex;
   justify-content: space-between;
 }
-.sortBtn {
-  background-color: $color-shark;
-  &:hover {
-    background-color: $color-outer_space;
-  }
-}
 .filterItemRange {
   display: flex;
   gap: 40px;

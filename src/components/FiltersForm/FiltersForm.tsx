@@ -21,7 +21,6 @@ import { AiOutlineClose } from "react-icons/ai";
 import Input from "../Input";
 import SingleSelect from "./SingleSelect";
 import MultiSelect from "./MultiSelect";
-import { loadMovieList } from "../../redux/reducers/movieReducer";
 
 const FormSelect = () => {
   const { theme } = useThemeContext();
@@ -65,8 +64,10 @@ const FormSelect = () => {
     );
   };
 
+  const [activeSortBtn, setActiveSortBtn] = useState("");
   const onClickSortBtn = (value: string) => {
     dispatch(setFiltersType(value));
+    setActiveSortBtn(value);
   };
 
   const onClearFilterClick = () => {
@@ -81,19 +82,11 @@ const FormSelect = () => {
     setYearsTo(0);
     setRatingFrom(0);
     setRatingTo(0);
+    setActiveSortBtn("");
   };
-
-  const genre = useSelector(FilterSelectors.getFiltersGenres);
-  const country = useSelector(FilterSelectors.getFiltersCountry);
-  const type = useSelector(FilterSelectors.getFiltersType);
-  const years = useSelector(FilterSelectors.getReleased);
-  const ratings = useSelector(FilterSelectors.getScore);
-  const released = Object.values(years).join();
-  const score = Object.values(ratings).join();
 
   const onShowResultsClick = () => {
     dispatch(setFilterStatus(true));
-    dispatch(loadMovieList({ type, genre, country, released, score }));
   };
 
   return (
@@ -114,11 +107,18 @@ const FormSelect = () => {
         <div className="filterContentItem">
           <span>Sort by</span>
           <div className="sortBtnsContainer">
-            <Button className="sortBtn" onClick={() => onClickSortBtn("movie")}>
+            <Button
+              className={classNames("sortBtn", {
+                ["activeSortBtn"]: activeSortBtn === "movie",
+              })}
+              onClick={() => onClickSortBtn("movie")}
+            >
               {"Movie"}
             </Button>
             <Button
-              className="sortBtn"
+              className={classNames("sortBtn", {
+                ["activeSortBtn"]: activeSortBtn === "series",
+              })}
               onClick={() => onClickSortBtn("series")}
             >
               {"Series"}

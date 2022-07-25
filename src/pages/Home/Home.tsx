@@ -13,6 +13,7 @@ import animationData from "../../components/Lotties/thorHummer.json";
 import Pagination from "../../components/Pagination";
 import classNames from "classnames";
 import EmptyState from "../../components/EmptyState";
+import { FilterSelectors } from "../../redux/reducers/filterReducer";
 
 const Home = ({ activePage }: any) => {
   const defaultOptions = {
@@ -32,11 +33,25 @@ const Home = ({ activePage }: any) => {
   const [currentPage, setCurrentPage] = useState(1);
   const order = activePage === "home" ? "popularity:desc" : "revenue:desc";
 
+  const isFiltered = useSelector(FilterSelectors.getFilterStatus);
+
+  const genre = useSelector(FilterSelectors.getFiltersGenres);
+  const country = useSelector(FilterSelectors.getFiltersCountry);
+  const type = useSelector(FilterSelectors.getFiltersType);
+  const years = useSelector(FilterSelectors.getReleased);
+  const ratings = useSelector(FilterSelectors.getScore);
+  const released = Object.values(years).join();
+  const score = Object.values(ratings).join();
+
   useEffect(() => {
-    dispatch(loadMovieList({ order, currentPage }));
+    dispatch(
+      isFiltered
+        ? loadMovieList({ type, genre, country, released, score })
+        : loadMovieList({ order, currentPage })
+    );
     dispatch(loadWatchlistId("me"));
     dispatch(loadWatchlist(""));
-  }, [activePage, order, currentPage]);
+  }, [activePage, order, currentPage, isFiltered]);
 
   const onNextClick = () => {
     setCurrentPage(currentPage + 1);
