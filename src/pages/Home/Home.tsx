@@ -98,24 +98,25 @@ const Home = ({ activePage }: any) => {
       ) : (
         <EmptyState />
       )}
-      <div
-        className={classNames("showMoreBtnContainer", {
-          ["displayNone"]: searchResults.length != 0,
-        })}
-      >
-        {isPageLoading ||
-          (movieList.length !== 0 && activePage === "favorites") ||
-          (movieList.length < totalCount && (
-            <button
-              className={classNames("showMoreBtn", {
-                ["showMoreBtnLight"]: !isDarkTheme,
-              })}
-              onClick={onShowMoreClick}
-            >
-              Show more
-            </button>
-          ))}
-      </div>
+      {isPageLoading || (
+        <div
+          className={classNames("showMoreBtnContainer", {
+            ["displayNone"]: searchResults.length != 0,
+          })}
+        >
+          {(movieList.length !== 0 && activePage === "favorites") ||
+            (movieList.length < totalCount && (
+              <button
+                className={classNames("showMoreBtn", {
+                  ["showMoreBtnLight"]: !isDarkTheme,
+                })}
+                onClick={onShowMoreClick}
+              >
+                Show more
+              </button>
+            ))}
+        </div>
+      )}
     </div>
   );
 };

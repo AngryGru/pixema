@@ -15,7 +15,7 @@ import IMDbIcon from "../../assets/icons/IMDbIcon";
 import MovieSlider from "../../components/MovieSlider";
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/thorHummer.json";
-import { MovieCardType, Theme } from "../../common/types";
+import { Theme } from "../../common/types";
 import { useThemeContext } from "../../context/themeModeContext";
 
 const MoviePage = () => {

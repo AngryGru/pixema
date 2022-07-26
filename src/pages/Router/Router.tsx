@@ -101,7 +101,6 @@ import { AuthSelector, getUserInfo } from "../../redux/reducers/authReducer";
 
 import PageWrapper from "../../components/PageWrapper";
 import Settings from "../Settings";
-import Favorites from "../Favorites";
 import Home from "../Home";
 import MoviePage from "../MoviePage";
 import Authorization from "../Authorization";
