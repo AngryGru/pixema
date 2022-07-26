@@ -1,7 +1,45 @@
+@import "src/assets/colors.scss";
+
 .homeContainer {
   width: 100%;
   padding-top: 40px;
 }
 .displayNone {
   display: none;
+}
+.showMoreBtnContainer {
+  margin-top: 40px;
+  padding: 10px;
+  margin-right: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .showMoreBtn {
+    font-weight: 500;
+    font-size: 16px;
+    color: $color-white;
+    width: 161px;
+    height: 40px;
+    background: $color-outer_space;
+    border-radius: 40px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+
+    &:hover {
+      background-color: $color-cape_code;
+    }
+  }
+
+  & .showMoreBtnLight {
+    @extend .showMoreBtn;
+    background-color: $color-bombay;
+    color: $color-black;
+
+    &:hover {
+      background-color: $color-bombay;
+      border: 2px solid $color-oslo_gray;
+    }
+  }
 }

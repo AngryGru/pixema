@@ -11,7 +11,7 @@ export type MovieReducerStateType = {
   searchResults: MovieCardType[];
   pageLoading: boolean;
   totalCount: number;
-  lastPage: number;
+  currentPage: number;
   watchlistId: number;
   watchlist: MovieCardType[];
 };
@@ -26,7 +26,7 @@ const initialState = {
   searchResults: [],
   pageLoading: false,
   totalCount: 0,
-  lastPage: 1,
+  currentPage: 1,
   watchlistId: null,
   watchlist: [],
 };
@@ -67,8 +67,8 @@ const movieSlice = createSlice({
     setTotalCount: (state, action) => {
       state.totalCount = action.payload;
     },
-    setLastPage: (state, action) => {
-      state.lastPage = action.payload;
+    setCurrentPage: (state, action) => {
+      state.currentPage = action.payload;
     },
     loadWatchlistId: (state, action) => {},
     setWatchlistId: (state, action) => {
@@ -80,6 +80,9 @@ const movieSlice = createSlice({
     },
     addToWatchlist: (state, action) => {},
     removeFromWatchlist: (state, action) => {},
+    setMoreMovies: (state: any, action: any) => {
+      state.movieList = state.movieList.concat(action.payload);
+    },
   },
 });
 
@@ -97,13 +100,14 @@ export const {
   loadSearchResults,
   setPageLoading,
   setTotalCount,
-  setLastPage,
+  setCurrentPage,
   loadWatchlistId,
   setWatchlistId,
   loadWatchlist,
   setWatchlist,
   addToWatchlist,
   removeFromWatchlist,
+  setMoreMovies,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;
@@ -119,7 +123,7 @@ export const MovieSelector = {
   getSearchResults: (state: any) => state.films.searchResults,
   getPageLoading: (state: any) => state.films.pageLoading,
   getTotalCount: (state: any) => state.films.totalCount,
-  getLastPage: (state: any) => state.films.lastPage,
+  getCurrentPage: (state: any) => state.films.currentPage,
   getWatchlistId: (state: any) => state.films.watchlistId,
   getWatchlist: (state: any) => state.films.watchlist,
 };

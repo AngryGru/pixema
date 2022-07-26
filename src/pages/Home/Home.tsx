@@ -5,17 +5,22 @@ import {
   loadWatchlistId,
   loadWatchlist,
   MovieSelector,
+  setCurrentPage,
 } from "../../redux/reducers/movieReducer";
 import "./Home.scss";
 import CardList from "../../components/CardList";
 import Lottie from "react-lottie";
 import animationData from "../../components/Lotties/thorHummer.json";
-import Pagination from "../../components/Pagination";
 import classNames from "classnames";
 import EmptyState from "../../components/EmptyState";
 import { FilterSelectors } from "../../redux/reducers/filterReducer";
+import { Theme } from "../../common/types";
+import { useThemeContext } from "../../context/themeModeContext";
 
 const Home = ({ activePage }: any) => {
+  const { theme } = useThemeContext();
+  const isDarkTheme = theme === Theme.Dark;
+
   const defaultOptions = {
     loop: true,
     autoplay: true,
@@ -27,10 +32,9 @@ const Home = ({ activePage }: any) => {
 
   const dispatch = useDispatch();
 
-  const lastPage = useSelector(MovieSelector.getLastPage);
   const totalCount = useSelector(MovieSelector.getTotalCount);
-  const pagesCount = Math.ceil(totalCount / 15);
-  const [currentPage, setCurrentPage] = useState(1);
+  const currentPage = useSelector(MovieSelector.getCurrentPage);
+  const [showMoreStatus, setShowMoreStatus] = useState(false);
   const order = activePage === "home" ? "popularity:desc" : "revenue:desc";
 
   const isFiltered = useSelector(FilterSelectors.getFilterStatus);
@@ -47,20 +51,16 @@ const Home = ({ activePage }: any) => {
     dispatch(
       isFiltered
         ? loadMovieList({ type, genre, country, released, score })
-        : loadMovieList({ order, currentPage })
+        : loadMovieList({ order, currentPage, showMoreStatus })
     );
     dispatch(loadWatchlistId("me"));
     dispatch(loadWatchlist(""));
   }, [activePage, order, currentPage, isFiltered]);
 
-  const onNextClick = () => {
-    setCurrentPage(currentPage + 1);
+  const onShowMoreClick = () => {
+    setShowMoreStatus(true);
+    dispatch(setCurrentPage(currentPage + 1));
   };
-  const onPrevClick = () => {
-    setCurrentPage(currentPage - 1);
-  };
-  const onLastClick = () => setCurrentPage(lastPage);
-  const onFirstClick = () => setCurrentPage(1);
 
   const movieList = useSelector(MovieSelector.getMovieList);
   const watchlist = useSelector(MovieSelector.getWatchlist);
@@ -91,25 +91,30 @@ const Home = ({ activePage }: any) => {
           />
         )
       ) : activePage === "favorites" ? (
-        <CardList data={watchlist} isSaved={true} />
+        <CardList
+          data={searchResults.length != 0 ? searchResults : watchlist}
+          isSaved={true}
+        />
       ) : (
         <EmptyState />
       )}
       <div
-        className={classNames("paginationContainer", {
+        className={classNames("showMoreBtnContainer", {
           ["displayNone"]: searchResults.length != 0,
         })}
       >
-        {(movieList.length !== 0 && activePage === "favorites") || (
-          <Pagination
-            pageNum={currentPage}
-            pagesCount={pagesCount}
-            onPrevClick={onPrevClick}
-            onNextClick={onNextClick}
-            onFirstClick={onFirstClick}
-            onLastClick={onLastClick}
-          />
-        )}
+        {isPageLoading ||
+          (movieList.length !== 0 && activePage === "favorites") ||
+          (movieList.length < totalCount && (
+            <button
+              className={classNames("showMoreBtn", {
+                ["showMoreBtnLight"]: !isDarkTheme,
+              })}
+              onClick={onShowMoreClick}
+            >
+              Show more
+            </button>
+          ))}
       </div>
     </div>
   );

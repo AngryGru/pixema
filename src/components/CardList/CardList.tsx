@@ -22,7 +22,6 @@ const CardList: FC<CardListProps> = ({ data, isTrends, isSaved }) => {
       <div key={item.id} onClick={() => onCardClick(item.id.toString())}>
         <Card
           id={item.id}
-          key={item.id}
           poster={item.poster}
           name={item.name}
           tagline={item.tagline}

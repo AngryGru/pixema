@@ -10,6 +10,9 @@ import { NavLink } from "react-router-dom";
 import {
   MovieSelector,
   setActiveTab,
+  setCurrentPage,
+  setMoreMovies,
+  setMovieList,
 } from "../../../redux/reducers/movieReducer";
 
 const NavLinks = () => {
@@ -17,6 +20,9 @@ const NavLinks = () => {
   const dispatch = useDispatch();
   const onTabClick = (tab: string) => {
     dispatch(setActiveTab(tab));
+    dispatch(setCurrentPage(1));
+    dispatch(setMoreMovies([]));
+    dispatch(setMovieList([]));
   };
 
   return (

@@ -24,21 +24,29 @@ import {
   setSearchResults,
   setPageLoading,
   setTotalCount,
-  setLastPage,
   loadWatchlistId,
   addToWatchlist,
   removeFromWatchlist,
   loadWatchlist,
   setWatchlist,
   setWatchlistId,
+  setMoreMovies,
 } from "../reducers/movieReducer";
 
 function* getMovieListSaga(action: any) {
   yield put(setPageLoading(true));
   const accessToken = localStorage.getItem("jwtAccessToken");
 
-  const { order, currentPage, type, genre, country, released, score } =
-    action.payload;
+  const {
+    order,
+    currentPage,
+    type,
+    genre,
+    country,
+    released,
+    score,
+    showMoreStatus,
+  } = action.payload;
 
   const { status, data } = yield call(
     getMovieListApi,
@@ -52,9 +60,12 @@ function* getMovieListSaga(action: any) {
     score
   );
   if (status === 200) {
-    yield put(setMovieList(data.pagination.data));
+    yield put(
+      showMoreStatus
+        ? setMoreMovies(data.pagination.data)
+        : setMovieList(data.pagination.data)
+    );
     yield put(setTotalCount(data.pagination.total));
-    yield put(setLastPage(data.pagination.last_page));
   }
   yield put(setPageLoading(false));
 }
