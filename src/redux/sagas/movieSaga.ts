@@ -149,6 +149,7 @@ function* getWatchListIdSaga(action: any) {
         return item.id;
       }
     });
+    console.log(watchlistId);
     localStorage.setItem("watchlistId", watchlistId);
     yield put(setWatchlistId(watchlistId));
   }
@@ -156,11 +157,18 @@ function* getWatchListIdSaga(action: any) {
 
 function* getWatchListSaga(action: any) {
   yield put(setPageLoading(true));
+  yield put(setWatchlist([]));
   const accessToken = localStorage.getItem("jwtAccessToken");
+  const watchlistId = localStorage.getItem("watchlistId");
 
-  const { status, data } = yield call(getWatchlistApi, accessToken);
+  const { status, data } = yield call(
+    getWatchlistApi,
+    accessToken,
+    watchlistId
+  );
 
   if (status === 200) {
+    console.log(data.items.data);
     yield put(setWatchlist(data.items.data));
   }
   yield put(setPageLoading(false));
@@ -168,12 +176,14 @@ function* getWatchListSaga(action: any) {
 
 function* addToWatchListSaga(action: any) {
   const accessToken = localStorage.getItem("jwtAccessToken");
-  yield call(addToWatchlistApi, action.payload, accessToken);
+  const watchlistId = localStorage.getItem("watchlistId");
+  yield call(addToWatchlistApi, action.payload, accessToken, watchlistId);
 }
 
 function* removeFromWatchListSaga(action: any) {
   const accessToken = localStorage.getItem("jwtAccessToken");
-  yield call(removeFromWatchlistApi, action.payload, accessToken);
+  const watchlistId = localStorage.getItem("watchlistId");
+  yield call(removeFromWatchlistApi, action.payload, accessToken, watchlistId);
 }
 
 export default function* movieWatcher() {

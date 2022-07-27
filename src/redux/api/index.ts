@@ -97,9 +97,7 @@ const getWatchlistIdApi = (id: any, token: any) => {
   );
 };
 
-const watchlistId = localStorage.getItem("watchlistId");
-
-const getWatchlistApi = (token: any) => {
+const getWatchlistApi = (token: any, watchlistId: any) => {
   return API.get(
     `/lists/${watchlistId}`,
     {},
@@ -111,7 +109,7 @@ const getWatchlistApi = (token: any) => {
   );
 };
 
-const addToWatchlistApi = (data: any, token: any) => {
+const addToWatchlistApi = (data: any, token: any, watchlistId: any) => {
   return API.post(`/lists/${watchlistId}/add`, data, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -120,7 +118,7 @@ const addToWatchlistApi = (data: any, token: any) => {
   });
 };
 
-const removeFromWatchlistApi = (data: any, token: any) => {
+const removeFromWatchlistApi = (data: any, token: any, watchlistId: any) => {
   return API.post(`/lists/${watchlistId}/remove`, data, {
     headers: {
       Authorization: `Bearer ${token}`,

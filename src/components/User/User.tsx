@@ -10,7 +10,6 @@ import { setLogout } from "../../redux/reducers/authReducer";
 import { setActiveTab } from "../../redux/reducers/movieReducer";
 import classNames from "classnames";
 import { Theme } from "../../common/types";
-import { ThemeModeProvider } from "../../context/ThemeModeProvider";
 import { useThemeContext } from "../../context/themeModeContext";
 
 const User = () => {
