@@ -1,46 +1,19 @@
-# Getting Started with Create React App
+# Pixema
+🎬 Pixema - is a service for selecting and obtaining information about a movies or series. It can be useful, for example, if you can't decide what to watch in the evening. 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to run
+Load this link in your browser https://angrygru.github.io/pixema/
 
-## Available Scripts
+## How to use
+First you need to log in or register.
 
-In the project directory, you can run:
+The app has several tabs: 🏡Home, 📊Trends, 💛Favorites and ⚙️Settings.
 
-### `yarn start`
+You can select something from the new movies on the "Home" tab. Or the most highly rated trends, on the "Trends" tab. By clicking on a movie, you will get detailed information about it as well as recommendations of similar movies. The movie that you like can be postponed on the "Favorites" tab.  You can also use Search if you are looking for something specific. On the "Settings" tab, you can change the theme mode and also see some user data.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Implemented functionality: registration, login, search and filtering, pagination, theme mode change, routing, etc. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![pixema main page](src/assets/pixema-screen.png)
 
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Stack
+React(TypeScript), React-Router, Redux, Redux Toolkit, Redux-Saga, SCSS, Axios.
