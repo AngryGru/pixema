@@ -10,6 +10,11 @@
 }
 .cardPoster {
   position: relative;
+  box-sizing: border-box;
+  border-radius: 20px;
+  height: 300px;
+  width: 200px;
+  border: 1px solid #101010;
 }
 .cardPoster img {
   border-radius: 20px;
@@ -96,5 +101,8 @@
     &:hover {
       color: $color-cornflower_blue;
     }
+  }
+  .cardPoster {
+    border: 1px solid #e8e8e8;
   }
 }

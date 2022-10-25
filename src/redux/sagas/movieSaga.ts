@@ -149,7 +149,6 @@ function* getWatchListIdSaga(action: any) {
         return item.id;
       }
     });
-    console.log(watchlistId);
     localStorage.setItem("watchlistId", watchlistId);
     yield put(setWatchlistId(watchlistId));
   }
@@ -168,7 +167,6 @@ function* getWatchListSaga(action: any) {
   );
 
   if (status === 200) {
-    console.log(data.items.data);
     yield put(setWatchlist(data.items.data));
   }
   yield put(setPageLoading(false));
