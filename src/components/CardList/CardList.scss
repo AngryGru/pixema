@@ -3,3 +3,21 @@
   flex-wrap: wrap;
   gap: 30px;
 }
+
+@media (max-width: 1280px) {
+  .cardListContainer {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardListContainer {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 450px) {
+  .cardListContainer {
+    padding: 0px 10px;
+  }
+}

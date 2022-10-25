@@ -324,9 +324,44 @@
   color: #7b61ff !important;
 }
 
+@media (max-width: 650px) {
+  .filterContainer {
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .filterContainerHeader {
+    width: 95%;
+    align-self: center;
+  }
+  .filterContent {
+    width: 95%;
+    align-self: center;
+  }
+  .sortBtnsContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  .filterContentActions {
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0px 5px;
+  }
+}
+
 @media (max-width: 620px) {
   .formSelectWrapper {
     width: 100%;
     height: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .filterItemRange {
+    justify-content: center;
+  }
+  .filterItemRange input {
+    width: 100%;
   }
 }
